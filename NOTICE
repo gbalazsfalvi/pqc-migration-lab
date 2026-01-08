@@ -1,0 +1,9 @@
+PQC Migration Lab
+Copyright 2026 Gergő Balázsfalvi
+
+Project-authored code, documentation and original application screenshots are
+licensed under the Apache License, Version 2.0. See LICENSE.
+
+Third-party dependencies, reference fixtures, fonts and Gradle wrapper files
+retain their applicable upstream terms. See THIRD_PARTY_NOTICES.md,
+THIRD_PARTY_LICENSES/ and workbench/public/licenses/.
