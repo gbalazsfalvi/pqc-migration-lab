@@ -2,7 +2,7 @@
 
 **Reviewed locally on 13 November 2026.** Scope: the standalone PQC Migration Lab source, build configuration, prepared CI, retained notices, screenshot assets and README.
 
-The review and README work are complete for this part. Two build-time dependency findings were fixed and a missing upstream notice was retained. Project-licence selection, Linux execution and the first public release remain open decisions; this report does not mark the entire publication milestone complete.
+The review and README work are complete for this part. Two build-time dependency findings were fixed and a missing upstream notice was retained. Project-licence selection, Linux execution and the first public release were open at the end of that review. The follow-up sections below record subsequent source publication and the owner's release decision.
 
 ## Findings and disposition
 
@@ -145,3 +145,11 @@ A local dependency refresh exposed five additional unpinned parent/BOM POMs for 
 The same published-digest check covers the additional `com.fasterxml.jackson:jackson-base:2.23.0` parent POM, pinned as `01b7f4829dbec642a1bead4d552ccf9777dcb501f93f34f6f400092f9bd364b4`. These changes approve specific metadata bytes, without introducing a new dependency version.
 
 Publishing source is separate from selecting a project licence, creating a tagged release or deploying the application. No project licence or hosted service was created by this follow-up.
+
+## Apache-2.0 and the first reference release
+
+The owner subsequently selected Apache-2.0 and authorized the first GitHub release. Version [0.1.0](releases/0.1.0.md) records that decision with the unchanged official Apache licence text in LICENSE and project attribution in NOTICE. The workbench package metadata uses the SPDX identifier `Apache-2.0`; third-party notices and their original terms remain intact.
+
+Gradle and workbench metadata use the same version, `0.1.0`. Java archives include LICENSE, NOTICE, THIRD_PARTY_NOTICES.md and the retained fixture notice under META-INF. CI assembles the distributable archives in addition to the existing quality gates and demonstrations.
+
+The release is a tagged source reference with documented reproduction steps. Its publication requires the exact release revision and tag to pass the Windows/Linux workflow. Hosted deployment and video work remain separate from this release.

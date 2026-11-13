@@ -3,6 +3,7 @@ import org.gradle.external.javadoc.StandardJavadocDocletOptions
 import org.gradle.testing.jacoco.plugins.JacocoPluginExtension
 import org.gradle.testing.jacoco.tasks.JacocoReport
 import org.gradle.testing.jacoco.tasks.JacocoCoverageVerification
+import org.gradle.jvm.tasks.Jar
 
 plugins {
     base
@@ -11,7 +12,7 @@ plugins {
 
 allprojects {
     group = "hu.balazsfalvi.pqclab"
-    version = "0.1.0-SNAPSHOT"
+    version = "0.1.0"
     repositories { mavenCentral() }
 }
 
@@ -32,6 +33,14 @@ subprojects {
     apply(plugin = "java-library")
     apply(plugin = "jacoco")
     apply(plugin = "com.diffplug.spotless")
+
+    // Keep project licensing and fixture attribution with every distributable Java archive.
+    tasks.withType<Jar>().configureEach {
+        from(rootProject.layout.projectDirectory) {
+            include("LICENSE", "NOTICE", "THIRD_PARTY_NOTICES.md", "THIRD_PARTY_LICENSES/**")
+            into("META-INF")
+        }
+    }
 
     extensions.configure<JavaPluginExtension> {
         toolchain.languageVersion.set(JavaLanguageVersion.of(25))

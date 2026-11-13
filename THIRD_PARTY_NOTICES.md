@@ -1,5 +1,7 @@
 # Third-party references and fixtures
 
+Project-authored code, documentation and original application screenshots are licensed under Apache-2.0; see [LICENSE](LICENSE) and [NOTICE](NOTICE). The third-party material described below retains its upstream terms and is not relicensed by the project's licence.
+
 ## Ed25519 reference answer
 
 `PublishedVectorTest` uses the public key, empty message and signature from RFC 8032, section 7.1, TEST 1.

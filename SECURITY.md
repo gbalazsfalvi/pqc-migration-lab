@@ -1,6 +1,6 @@
 # Security policy
 
-PQC Migration Lab is a local synthetic reference project. Its security assumptions and exclusions are documented in the [threat model](docs/threat-model.md). There is no production deployment or supported public release at present.
+PQC Migration Lab 0.1.0 is a local synthetic reference release. Its security assumptions and exclusions are documented in the [threat model](docs/threat-model.md). There is no production deployment or production support commitment.
 
 ## Report a suspected issue
 

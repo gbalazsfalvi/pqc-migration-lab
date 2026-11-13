@@ -38,7 +38,7 @@ jobs:
         run: npm ci --prefix workbench --no-audit --no-fund
       - name: Verify Java and workbench source, then run protocol demonstrations
         shell: bash
-        run: bash ./gradlew clean check probe :integration-app:demo migrationDemo --console=plain
+        run: bash ./gradlew clean check assemble probe :integration-app:demo migrationDemo --console=plain
       - name: Check the actual forked JMH harness without performance thresholds
         shell: bash
         run: bash ./gradlew benchmarkSmoke --console=plain

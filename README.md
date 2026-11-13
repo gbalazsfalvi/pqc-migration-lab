@@ -8,6 +8,8 @@ Sign a synthetic software release with Ed25519 and ML-DSA-65, follow its origina
 
 Java owns verification and business decisions. The React workbench makes those decisions visible. Everything runs locally.
 
+**Version 0.1.0 · Apache-2.0.** Read the [release notes](docs/releases/0.1.0.md) or download the tagged source from [GitHub Releases](https://github.com/gbalazsfalvi/pqc-migration-lab/releases/tag/v0.1.0).
+
 ![Migration workbench with a dual-signed release, its exact payload bytes and Java policy observations](docs/images/workbench.jpg)
 
 _Actual local application, with synthetic data. Java 25 · Spring Boot · React / TypeScript · DSSE · JMH._
@@ -34,6 +36,14 @@ The receiver exposes public generation states and fingerprints. The view below s
 [Capture provenance and reproduction steps](docs/images/README.md). These are real local observations; fresh runs generate different event IDs, keys and timestamps.
 
 ## Try it locally
+
+To reproduce this release from a fresh checkout:
+
+```sh
+git clone https://github.com/gbalazsfalvi/pqc-migration-lab.git
+cd pqc-migration-lab
+git checkout v0.1.0
+```
 
 Install **JDK 25**, **Node.js 24.14+ in the 24 LTS line**, and **npm 11**. Set `JAVA_HOME` to JDK 25. The checked-in wrapper supplies Gradle 9.2.0.
 
@@ -175,7 +185,16 @@ Use [SECURITY.md](SECURITY.md), [the threat model](docs/threat-model.md) and [th
 - [Benchmark method](docs/milestone-04a.md)
 - [Publication review and open decisions](docs/publication-review.md)
 - [Bilingual portfolio case study](docs/portfolio-case-study.md)
+- [Version 0.1.0 release notes](docs/releases/0.1.0.md)
 - [Roadmap](docs/roadmap.md)
 - [Contributor operating guide](AGENTS.md)
 
-A project licence has not yet been selected. Third-party licences and fixture provenance are recorded in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The bilingual portfolio case study is implemented and checked in the separate Astro portfolio. The application runs locally; a hosted service, tagged release and demonstration video are outside the current scope. Publication of source code does not claim an open-source project licence.
+The bilingual portfolio case study is implemented and checked in the separate Astro portfolio. Version 0.1.0 is the first tagged reference release. The application runs locally; hosted operation and a demonstration video are separate future work.
+
+## License
+
+Copyright 2026 Gergő Balázsfalvi.
+
+Project-authored code, documentation and original application screenshots are licensed under the **Apache License, Version 2.0**. See [LICENSE](LICENSE) for the full terms and [NOTICE](NOTICE) for attribution.
+
+Third-party dependencies, public reference fixtures, fonts and Gradle wrapper files retain their applicable upstream terms. Their provenance and retained notices are described in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md); the project licence does not replace those terms.

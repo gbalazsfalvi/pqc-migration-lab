@@ -62,6 +62,8 @@ Part two is implemented in the separate local Astro portfolio: an English/Hungar
 
 The user subsequently authorized the public [source repository](https://github.com/gbalazsfalvi/pqc-migration-lab). Windows/Linux verification runs through the repository's actual Actions workflow; the initial cold-cache metadata correction is recorded in [the publication review](publication-review.md#public-source-follow-up).
 
-Remaining work includes a demonstration video, the owner’s repository-licence decision and any tagged release or hosted deployment. Keep the dependency and fixture attribution current.
+The owner selected Apache-2.0 and authorized the first tagged reference release, [version 0.1.0](releases/0.1.0.md). The repository includes the full licence, project attribution, preserved third-party terms and consistent release metadata. Java archives carry the legal files under META-INF, and CI builds the distributable archives as well as checking the source.
+
+A demonstration video and hosted deployment are optional future work. Keep the dependency and fixture attribution current.
 
 The application still runs locally. Public source publication does not create a hosted workbench or publish the separate portfolio website.

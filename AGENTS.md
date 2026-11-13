@@ -6,7 +6,7 @@ This is a standalone local reference project. All source, documentation, comment
 
 Milestones one through 05A are implemented: cryptographic interoperability, a local Spring Boot integration, an English React workbench, reproducible JMH benchmarks, durable key lifecycle management and an isolated one-command migration demonstration with public evidence. Implement later milestones only when requested. The protocol and application rules remain independent of Spring.
 
-Milestone 05B part one adds a local publication review, scoped build-tool security fixes, retained upstream notices and a screenshot-led README. Part two adds an English/Hungarian case study in the separate local Astro portfolio, using the original screenshots and dated evidence; see `docs/portfolio-case-study.md`. The user authorized publication to `gbalazsfalvi/pqc-migration-lab`; the source is public and the actual Windows/Linux workflow records remote verification. Project licensing, tagged release creation, video work and hosted deployment remain separate decisions; see `docs/publication-review.md`.
+Milestone 05B adds a publication review, scoped build-tool security fixes, retained upstream notices, a screenshot-led README and an English/Hungarian case study in the separate Astro portfolio; see `docs/portfolio-case-study.md`. The source is public at `gbalazsfalvi/pqc-migration-lab`, with actual Windows/Linux verification in GitHub Actions. The user selected Apache-2.0 and authorized version 0.1.0 as the first tagged reference release; see `docs/releases/0.1.0.md`. Video work and hosted deployment remain separate decisions.
 
 ## Boundaries
 
@@ -50,6 +50,8 @@ Milestone 05B part one adds a local publication review, scoped build-tool securi
 - Demo PASS requires every planned phase, assertion and workspace cleanup to complete. Failures stop dependent actions, retain honest partial observations and return a nonzero exit. Checksums identify bytes; they do not authenticate an unsigned report.
 
 ## Code quality
+
+Project-authored code, documentation and original screenshots use Apache-2.0. Keep LICENSE, NOTICE and all applicable third-party notices intact. Java archives include those legal files under META-INF. Use the same release version in Gradle and the workbench package metadata, and never tag or publish a revision that has not passed its required checks.
 
 Document every type and method with useful English Javadoc. Explain security decisions and unusual implementation details with inline comments. Prefer immutable data, constructor injection and small focused classes. Keep comments in sync with behaviour.
 

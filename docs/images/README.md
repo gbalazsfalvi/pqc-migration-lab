@@ -22,4 +22,4 @@ The lifecycle state comes from the existing local synthetic session. No extra ro
 
 Event freshness remains active. Preserve screenshot captions that describe the observed scenario rather than treating a historical screenshot as current runtime evidence.
 
-Fonts and icons remain subject to the [third-party notices](../../THIRD_PARTY_NOTICES.md). A project licence is still pending.
+The original application screenshots are covered by the project's [Apache-2.0 licence](../../LICENSE). Fonts and icons retain their upstream terms, described in the [third-party notices](../../THIRD_PARTY_NOTICES.md).
