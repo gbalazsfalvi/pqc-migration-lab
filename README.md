@@ -1,5 +1,7 @@
 # PQC Migration Lab
 
+[![Verify PQC Migration Lab](https://github.com/gbalazsfalvi/pqc-migration-lab/actions/workflows/verify.yml/badge.svg)](https://github.com/gbalazsfalvi/pqc-migration-lab/actions/workflows/verify.yml)
+
 **A working Java integration for exploring post-quantum signature migration.**
 
 Sign a synthetic software release with Ed25519 and ML-DSA-65, follow its original bytes through DSSE and HTTP, and see how a receiver handles stronger algorithm requirements, retries, rotating keys and revoked trust.

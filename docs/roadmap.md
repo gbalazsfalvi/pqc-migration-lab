@@ -60,6 +60,8 @@ Part one is implemented locally: [publication review](publication-review.md), sc
 
 Part two is implemented in the separate local Astro portfolio: an English/Hungarian case study, three original application screenshots, dated verification figures, a homepage feature and reciprocal links to the earlier PQC research. See [the case-study handover](portfolio-case-study.md).
 
-Remaining work includes a demonstration video, the owner’s repository-licence decision, Linux verification and final publication checks. Keep the dependency and fixture attribution current.
+The user subsequently authorized the public [source repository](https://github.com/gbalazsfalvi/pqc-migration-lab). Windows/Linux verification runs through the repository's actual Actions workflow; the initial cold-cache metadata correction is recorded in [the publication review](publication-review.md#public-source-follow-up).
 
-Publishing, deployment and a public repository are separate future actions. This working copy remains local.
+Remaining work includes a demonstration video, the owner’s repository-licence decision and any tagged release or hosted deployment. Keep the dependency and fixture attribution current.
+
+The application still runs locally. Public source publication does not create a hosted workbench or publish the separate portfolio website.

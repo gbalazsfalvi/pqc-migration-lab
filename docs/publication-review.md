@@ -119,3 +119,29 @@ npm audit --prefix workbench --json --registry=https://registry.npmjs.org
 For Maven, repeat exact-version OSV queries from the current lockfiles and verification metadata, check response counts/pagination and review every match against its affected ranges and actual resolution scope. Keep raw local audit output out of the public source snapshot.
 
 A new code, dependency, asset or workflow change after this review needs proportionate rechecking. A public release still needs the open licence decision, final source selection and its own publication authorization.
+
+## Public-source follow-up
+
+The owner subsequently authorized publication to [gbalazsfalvi/pqc-migration-lab](https://github.com/gbalazsfalvi/pqc-migration-lab). The first commit contains 226 reviewed source, documentation and asset files. Its exact staged snapshot passed the official Gitleaks rules with zero findings, the private-identifier check and Actionlint. Runtime vaults, account secrets, databases, generated outputs and local toolchains remain excluded.
+
+The [first GitHub run](https://github.com/gbalazsfalvi/pqc-migration-lab/actions/runs/43425304957) exposed a cold-cache verification gap on both operating systems: the existing JUnit BOM 5.14.3 coordinate had a pinned POM but no pin for its Gradle Module Metadata. The missing `junit-bom-5.14.3.module` was downloaded from [Maven Central](https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.14.3/junit-bom-5.14.3.module); its coordinates and the published SHA-256 were checked before adding the exact artifact allowance:
+
+```text
+f25c40bfa52c8b7b425d576a88f310f6432616d62ba5893203fa27dfbc9f025e
+```
+
+Strict dependency verification remains enabled. No dependency version, receiver policy or application behaviour changes. Verification failures now emit the detailed console report, and CI retains the dependency-verification report alongside its other evidence. The README badge links to the actual [workflow results](https://github.com/gbalazsfalvi/pqc-migration-lab/actions/workflows/verify.yml), rather than asserting a remote result in advance.
+
+A local dependency refresh exposed five additional unpinned parent/BOM POMs for already selected versions. Each was fetched from its coordinate under Maven Central, compared against the separately published SHA-256, and added as an exact artifact pin:
+
+| Coordinate                                                            | Artifact | SHA-256                                                            |
+| --------------------------------------------------------------------- | -------- | ------------------------------------------------------------------ |
+| `com.google.guava:guava-parent:33.7.2-jre`                            | POM      | `a81570d53c8710355e0216a4405afa93834b17c4cdd0ed9aa8beede3a132bbbe` |
+| `com.fasterxml.jackson:jackson-base:2.22.4`                           | POM      | `51b5cc57df78f50a43210e577075f68399e31dde7150455e179d249e637582a1` |
+| `com.fasterxml.jackson.datatype:jackson-datatypes-collections:2.22.4` | POM      | `1ec2fb31c1f0c3e42a8dcfcca810c1df095700c542dea23d3ad6cae26e5795df` |
+| `com.fasterxml.jackson.module:jackson-modules-java8:2.22.4`           | POM      | `20cdf333d224a91e6a4b548f8f4515790e34efc19cadc41f06173f51d97ac70d` |
+| `org.junit:junit-bom:6.1.3`                                           | POM      | `a9000043610a3e90c852e779a6b1a8eb724a9f312cf5f7ddd57862b010c65dc8` |
+
+The same published-digest check covers the additional `com.fasterxml.jackson:jackson-base:2.23.0` parent POM, pinned as `01b7f4829dbec642a1bead4d552ccf9777dcb501f93f34f6f400092f9bd364b4`. These changes approve specific metadata bytes, without introducing a new dependency version.
+
+Publishing source is separate from selecting a project licence, creating a tagged release or deploying the application. No project licence or hosted service was created by this follow-up.

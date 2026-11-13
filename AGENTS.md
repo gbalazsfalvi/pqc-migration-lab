@@ -6,7 +6,7 @@ This is a standalone local reference project. All source, documentation, comment
 
 Milestones one through 05A are implemented: cryptographic interoperability, a local Spring Boot integration, an English React workbench, reproducible JMH benchmarks, durable key lifecycle management and an isolated one-command migration demonstration with public evidence. Implement later milestones only when requested. The protocol and application rules remain independent of Spring.
 
-Milestone 05B part one adds a local publication review, scoped build-tool security fixes, retained upstream notices and a screenshot-led README. Part two adds an English/Hungarian case study in the separate local Astro portfolio, using the original screenshots and dated evidence; see `docs/portfolio-case-study.md`. Project licensing, Linux verification, release creation, video work and publication remain open; see `docs/publication-review.md`.
+Milestone 05B part one adds a local publication review, scoped build-tool security fixes, retained upstream notices and a screenshot-led README. Part two adds an English/Hungarian case study in the separate local Astro portfolio, using the original screenshots and dated evidence; see `docs/portfolio-case-study.md`. The user authorized publication to `gbalazsfalvi/pqc-migration-lab`; the source is public and the actual Windows/Linux workflow records remote verification. Project licensing, tagged release creation, video work and hosted deployment remain separate decisions; see `docs/publication-review.md`.
 
 ## Boundaries
 

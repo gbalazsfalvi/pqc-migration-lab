@@ -48,6 +48,7 @@ jobs:
         with:
           name: pqc-lab-${{ matrix.os }}
           path: |
+            build/reports/dependency-verification/
             build/reports/technical-probe/
             build/reports/integration-demo/report.*
             build/reports/migration-demo/
