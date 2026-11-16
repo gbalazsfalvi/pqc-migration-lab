@@ -51,6 +51,8 @@ final class MigrationTransport implements AutoCloseable {
         EVALUATE(false, "POST", "/api/receiver/evaluations", PublicResponse.Kind.EVALUATION),
         /** Delivers the exact supplied envelope under the unchanged receiver policy. */
         DELIVER(false, "POST", "/api/receiver/releases", PublicResponse.Kind.RECEIPT),
+        /** Observes real upstream failure and recovery through the publisher gateway. */
+        GATEWAY_DELIVER(true, "POST", "/api/workbench/deliveries", PublicResponse.Kind.RECEIPT),
         /** Rotates both keys through publisher-only administration. */
         ROTATE(true, "POST", "/api/workbench/keys/rotate", PublicResponse.Kind.REGISTRY),
         /** Revokes a generation through publisher-only administration. */
@@ -159,7 +161,7 @@ final class MigrationTransport implements AutoCloseable {
     }
 
     /** Requires the actual bootstrap-selected loopback origin, with no alternate host or URI components. */
-    private static URI loopback(URI address) {
+    static URI loopback(URI address) {
         if (!"http".equals(address.getScheme())
                 || !"127.0.0.1".equals(address.getHost())
                 || address.getPort() < 1

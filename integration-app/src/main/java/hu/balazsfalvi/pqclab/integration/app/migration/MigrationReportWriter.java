@@ -15,6 +15,8 @@ final class MigrationReportWriter {
         var mapper = new ObjectMapper();
         var root = mapper.valueToTree(report);
         var object = (com.fasterxml.jackson.databind.node.ObjectNode) root;
+        // Preserve the original schema-1 shape; only rehearsal schema 2 carries completed policy phases.
+        if (report.schemaVersion() == 1) object.remove("policyPhases");
         object.put("successful", report.successful());
         object.put(
                 "passed",
@@ -32,10 +34,19 @@ final class MigrationReportWriter {
                 markdown(report),
                 StandardCharsets.UTF_8,
                 StandardOpenOption.CREATE_NEW);
+        boolean rehearsal = "06B".equals(report.milestone());
+        if (rehearsal) {
+            Files.writeString(
+                    directory.resolve("report.html"),
+                    PolicyReportHtml.render(report),
+                    StandardCharsets.UTF_8,
+                    StandardOpenOption.CREATE_NEW);
+        }
 
         var artifacts = new TreeSet<String>();
         artifacts.add("report.json");
         artifacts.add("report.md");
+        if (rehearsal) artifacts.add("report.html");
         for (var exchange : report.exchanges()) {
             if (exchange.requestFile() != null) artifacts.add(exchange.requestFile());
             if (exchange.responseFile() != null) artifacts.add(exchange.responseFile());
@@ -81,13 +92,8 @@ final class MigrationReportWriter {
                 .append("- Failure category: ")
                 .append(report.failureCode() == null ? "none" : report.failureCode())
                 .append("\n\n")
-                .append(
-                        "A fresh synthetic integration accepts a dual-signed event, reuses its receipt, rotates both keys, ")
-                .append(
-                        "revokes the old generation and accepts a new event. Two full runtime reconstructions test durable ")
-                .append(
-                        "trust and receipts. The live receiver stays **BOTH_REQUIRED** throughout; four-policy comparisons ")
-                .append("are read-only observations, not policy changes.\n\n")
+                .append(story(report))
+                .append(rollout(report))
                 .append("## Runtime and method\n\n")
                 .append("- Java: ")
                 .append(escape(report.environment().javaRuntimeVersion()))
@@ -182,6 +188,56 @@ final class MigrationReportWriter {
                 .append("- A failed or incomplete run stops dependent actions and retains only actual observations. ")
                 .append("A missing SHA256SUMS file means bundle generation did not finish.\n");
         return text.toString();
+    }
+
+    /** Distinguishes the fixed-policy lifecycle trial from the actual four-policy deployment rehearsal. */
+    private String story(MigrationReport report) {
+        if ("06B".equals(report.milestone())) {
+            return "A fresh synthetic integration retains one publisher while the receiver is deployed under "
+                    + "**CLASSICAL_ONLY → SHADOW_PQC → BOTH_REQUIRED → PQC_REQUIRED**. "
+                    + "The same three original signed events, public trust and durable ledger cross all four phases. "
+                    + "Each phase verifies the actual receiver configuration, signature evidence, delivery permission "
+                    + "and unchanged first-acceptance history. Policy changes use owned receiver restarts, not an HTTP mutation API.\n\n";
+        }
+        return "A fresh synthetic integration accepts a dual-signed event, reuses its receipt, rotates both keys, "
+                + "revokes the old generation and accepts a new event. Two full runtime reconstructions test durable "
+                + "trust and receipts. The live receiver stays **BOTH_REQUIRED** throughout; four-policy comparisons "
+                + "are read-only observations, not policy changes.\n\n";
+    }
+
+    /** Presents completed phase rows only, with references to the actual HTTP artifacts. */
+    private String rollout(MigrationReport report) {
+        if (!"06B".equals(report.milestone())) return "";
+        var text = new StringBuilder("## Observed policy rollout\n\n");
+        text.append("Completed phases: ")
+                .append(report.policyPhases().size())
+                .append("/4.\n\n")
+                .append("| Phase | Live requirement | Ed25519 only | Dual signature | ML-DSA-65 only |\n")
+                .append("| ---: | --- | --- | --- | --- |\n");
+        for (var phase : report.policyPhases()) {
+            text.append("| ")
+                    .append(phase.phase())
+                    .append(" | ")
+                    .append(phase.policy())
+                    .append(" |");
+            for (var delivery : phase.deliveries()) {
+                text.append(" HTTP ")
+                        .append(delivery.actualStatus())
+                        .append(" · ")
+                        .append(delivery.result())
+                        .append(" (#")
+                        .append(delivery.exchange())
+                        .append(") |");
+            }
+            text.append('\n');
+        }
+        return text.append("\n201 creates a result, 200 reuses the original receipt, and 403 rejects delivery. ")
+                .append(
+                        "Historical receipt reads are separate observations. enforcedPolicy reports today's requirement; ")
+                .append("acceptedPolicy, acceptedAt, receipt identity and first signature evidence remain original. ")
+                .append("PQC_REQUIRED keeps PQC mandatory while retiring the classical requirement; ")
+                .append("it deliberately admits PQC-only senders rejected by BOTH_REQUIRED.\n\n")
+                .toString();
     }
 
     /** Keeps long registry and receipt comparisons readable without altering the structured evidence. */

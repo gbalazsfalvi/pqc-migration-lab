@@ -1,47 +1,74 @@
-# Portfolio case study · 05B, part two
+# Portfolio case study · final local 06B
 
-**Implemented locally on 13 November 2026.** The English and Hungarian case studies live in the separately maintained Astro portfolio. This work does not create a public repository, publish the portfolio or change the laboratory's runtime.
+Updated locally on **16 November 2026** in the separate Astro portfolio.
+The default English route is /work/pqc-migration-lab/; its Hungarian counterpart
+is /hu/munkak/pqc-migration-lab/. The homepage feature and related PQC research
+link to the case study in both languages.
 
-## Presentation
+## Narrative and verified evidence
 
-The default English route is `/work/pqc-migration-lab/`; its Hungarian counterpart is `/hu/munkak/pqc-migration-lab/`.
+The case study describes the author's research, design, Java implementation,
+React workbench and operational verification. Its four steps now follow actual
+CLASSICAL_ONLY → SHADOW_PQC → BOTH_REQUIRED → PQC_REQUIRED deployments.
+It explains the surviving publisher, separate receiver, unchanged public trust,
+durable ledger, current policy enforcement and immutable first-acceptance facts.
 
-The case study explains the software-release scenario, the author's end-to-end contribution, Java-owned policy decisions, DSSE, transactional retry handling, persistent key lifecycle, the four-step migration story and the benchmark method. Its experimental boundary distinguishes a local application-level integration from production key custody and post-quantum TLS.
+The shared evidence snapshot is **228 Java tests and 17 frontend tests**, with
+**four policy phases, 165 assertions and 49 HTTP attempts per rehearsal**.
+Both native JVMs and actual local Compose containers completed the plan.
+These are dated observations, not a live health indicator.
 
-The homepage includes a dedicated reference-project feature. The Lab case study and the earlier professional PQC research link to each other in both languages. Existing professional project descriptions remain separate from this independent implementation.
+## Original captures
 
-The portfolio's `src/data/pqc-migration-lab.ts` holds the typed narrative and shared evidence values. Shared Astro components render the translated story, screenshots and related work using the established paper, graphite and burgundy design. No running Java backend is needed to view the static case study.
+The lead image is the actual 06B Compose report from run
+475f288d-cef6-4e07-8b06-265810be59d3. The two existing workbench images retain
+their original 13 November 2026 provenance and explicit historical captions.
+The new report and old interface captures are not presented as one live session.
 
-## Evidence snapshot
+| Capture | Original JPEG SHA-256 |
+| --- | --- |
+| migration-rehearsal.jpg | 3b65ca9fd132ab8ee0256883336693e1209bb2e31a3b3b98990d282bbab5dbc2 |
+| signature-stripping.jpg | 1c9f44241f8cf913bb272d7a2bf861114b1cb39a455dc9a60cf043dda0c192ea |
+| key-lifecycle.jpg | d200c2059a7c3d50b59c63d0ee316d3da384f4c35329beb17be0de6f820d47a9 |
 
-The case study uses the laboratory's verified **13 November 2026** results: 210 Java tests, 17 frontend tests, 28 actual HTTP requests, 91 migration-story assertions and two full runtime reconstructions. They are historical verification figures, not a live health report or tests performed by the portfolio.
+The portfolio and Lab retain matching original bytes. Astro generates responsive
+WebP derivatives, and each figure opens the full-size original in a separate tab.
+Captions, alternative text and surrounding content are translated; application
+and report UI stay English. See [capture provenance](images/README.md).
 
-The three images are unchanged copies of [the original captures](images/README.md). Their SHA-256 values match in the Lab and portfolio:
+## Inspectable download
 
-| Capture                   | SHA-256                                                            |
-| ------------------------- | ------------------------------------------------------------------ |
-| `workbench.jpg`           | `04797034f9f345e098d6ef3893b3ad3199be3301f88e59a8474b4ea1faed8233` |
-| `signature-stripping.jpg` | `1c9f44241f8cf913bb272d7a2bf861114b1cb39a455dc9a60cf043dda0c192ea` |
-| `key-lifecycle.jpg`       | `d200c2059a7c3d50b59c63d0ee316d3da384f4c35329beb17be0de6f820d47a9` |
+The portfolio's public/downloads/pqc-migration-lab-06b-evidence.zip contains
+exactly the 82 files from the [reviewed Compose example](evidence/README.md).
+Its SHA-256 is
+086c1c699db40c45ff71369687de31fe4d4af63310d0b0d6009c32976b1accd6.
+Both translations link to this local static-site asset. Readers can inspect
+HTML/Markdown/JSON, exact public bodies and checksums without running Java.
+The archive contains no private key vault, account secret or raw Docker log.
 
-The UI inside each capture is English. Captions, alternative text and full-size actions are translated. Responsive WebP derivatives reduce transfer size; each image opens the original JPEG in a separate tab.
+## Local verification
 
-To update the evidence, verify the Lab first, then change the shared date and figures. Refresh screenshots only from actual synthetic observations and update their provenance together. Keep comparative JMH measurements distinct from HTTP functional checks and smoke timings.
+Run in the Astro portfolio:
 
-## Local portfolio verification
+    npm run check
+    npm run format:check
+    npm run build
+    npm run verify
+    npm run preview
 
-Run these commands in the Astro portfolio:
+With preview running, npm run verify -- --base=http://127.0.0.1:4367 also verifies
+HTTP responses. Use npm.cmd on Windows where required by PowerShell policy.
+The site validator covers 25 pages, internal links/assets, reciprocal translations,
+homepage/research entry points, four policy names, the evidence download, original
+image resources, captions, dates, metadata, sitemap and draft exclusion.
 
-```sh
-npm run check
-npm run format:check
-npm run build
-npm run verify
-npm run preview
-```
+The portfolio preserves its paper, graphite and burgundy design. It remains
+independent of the Java runtime. Both translations identify the linked public
+source separately from the locally served site. The 06A/06B laboratory source is
+included in v0.2.0; publishing it does not deploy the portfolio or application.
 
-With the preview running, `npm run verify -- --base=http://127.0.0.1:4367` checks HTTP responses too. On Windows use `npm.cmd` if PowerShell restricts `npm.ps1`.
-
-The static verification covers both case-study routes, reciprocal translations, homepage entry points, related research, dated evidence, three captioned images, translated alternative text, original JPEGs, every responsive image resource, metadata and sitemap entries. The build contains 25 HTML pages.
-
-Browser checks cover English/Hungarian switching, full-size image opening, related-work navigation, the homepage feature and a 390 × 844 mobile viewport. The case study remains a local portfolio artifact. A public source link should be added only after an actual source release exists.
+Final local checks passed on 16 November 2026: Astro reported zero errors,
+warnings or hints; formatting passed; all 25 pages and 768 internal links/assets
+passed static and HTTP verification. Actual browser navigation confirmed both
+languages, and the Hungarian case study had no horizontal document overflow at
+390 × 844. The evidence download's bytes matched the verified ZIP digest.

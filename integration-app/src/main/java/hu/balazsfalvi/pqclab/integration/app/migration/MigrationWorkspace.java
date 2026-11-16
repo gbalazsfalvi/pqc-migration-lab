@@ -36,6 +36,11 @@ final class MigrationWorkspace implements AutoCloseable {
         return root.resolve("account.key");
     }
 
+    /** @return this instance's newly allocated private runtime namespace, never a caller-supplied path */
+    Path directory() {
+        return root;
+    }
+
     /** Removes only this instance's created tree, without following symbolic links. */
     @Override
     public void close() throws IOException {

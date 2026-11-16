@@ -6,9 +6,11 @@ import java.nio.file.Path;
 import java.time.Instant;
 import java.util.UUID;
 
-/** Runs the isolated milestone-05A story and writes public evidence even when execution cannot finish. */
+/** Runs an isolated migration story and writes public evidence even when execution cannot finish. */
 public final class MigrationDemo {
     private final Scenario scenario;
+    private final String milestone;
+    private final String topology;
 
     /** Creates the real three-phase HTTP scenario. */
     public MigrationDemo() {
@@ -17,7 +19,17 @@ public final class MigrationDemo {
 
     /** Supplies an execution-boundary seam for testing interrupted evidence without replacing production HTTP verdicts. */
     MigrationDemo(Scenario scenario) {
+        this(
+                scenario,
+                "05A",
+                "Two isolated Spring Boot contexts and loopback HTTP servers within one JVM; three disk-only runtime phases");
+    }
+
+    /** Supplies an independently owned process topology without changing public report validation. */
+    MigrationDemo(Scenario scenario, String milestone, String topology) {
         this.scenario = scenario;
+        this.milestone = milestone;
+        this.topology = topology;
     }
 
     /**
@@ -80,8 +92,12 @@ public final class MigrationDemo {
         // Finish only bounded local evidence with a clear flag; preserve cancellation for the caller afterwards.
         if (Thread.interrupted()) interrupted = true;
         // Cleanup belongs to completion. A failure while closing the workspace cannot produce a PASS.
-        if (failureCode == null && !journal.checks().isEmpty()) completed = true;
-        if (failureCode == null && !completed) failureCode = "NO_OBSERVATIONS";
+        if (failureCode == null
+                && !journal.checks().isEmpty()
+                && (!"06B".equals(milestone) || journal.policyPhases().size() == 4)) completed = true;
+        if (failureCode == null && !completed) {
+            failureCode = journal.checks().isEmpty() ? "NO_OBSERVATIONS" : "PHASES_INCOMPLETE";
+        }
         var outcome = completed
                 ? MigrationReport.Outcome.PASS
                 : "EXPECTATION_FAILED".equals(failureCode)
@@ -92,11 +108,11 @@ public final class MigrationDemo {
                 System.getProperty("java.vendor"),
                 System.getProperty("os.name"),
                 System.getProperty("os.arch"),
-                "Two isolated Spring Boot contexts and loopback HTTP servers within one JVM; three disk-only runtime phases",
+                topology,
                 "DSSEv1 / Ed25519 + ML-DSA-65");
         var report = new MigrationReport(
-                1,
-                "05A",
+                "06B".equals(milestone) ? 2 : 1,
+                milestone,
                 runId,
                 started.toString(),
                 Instant.now().toString(),
@@ -105,7 +121,8 @@ public final class MigrationDemo {
                 failureCode,
                 environment,
                 journal.exchanges(),
-                journal.checks());
+                journal.checks(),
+                journal.policyPhases());
         try {
             new MigrationReportWriter().write(directory, report);
             return new Result(directory, report);

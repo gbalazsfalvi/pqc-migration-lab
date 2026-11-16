@@ -19,6 +19,7 @@ final class MigrationJournal {
     private final Path directory;
     private final List<MigrationReport.Exchange> exchanges = new ArrayList<>();
     private final List<MigrationReport.Check> checks = new ArrayList<>();
+    private final List<MigrationReport.PolicyPhase> policyPhases = new ArrayList<>();
 
     /** Binds the journal to one newly created public run directory. */
     MigrationJournal(Path directory) throws IOException {
@@ -93,6 +94,18 @@ final class MigrationJournal {
     /** @return an immutable snapshot of observed expectations */
     List<MigrationReport.Check> checks() {
         return List.copyOf(checks);
+    }
+
+    /** Retains a phase summary only after every delivery, historical read and invariant in that phase passed. */
+    void completePolicyPhase(MigrationReport.PolicyPhase phase) {
+        if (phase.phase() != policyPhases.size() + 1)
+            throw new IllegalArgumentException("Record completed phases in order.");
+        policyPhases.add(phase);
+    }
+
+    /** @return immutable completed policy phases; unfinished phases remain visible only in the actual exchange timeline */
+    List<MigrationReport.PolicyPhase> policyPhases() {
+        return List.copyOf(policyPhases);
     }
 
     /** Writes a single new public artifact; an earlier run is never overwritten. */

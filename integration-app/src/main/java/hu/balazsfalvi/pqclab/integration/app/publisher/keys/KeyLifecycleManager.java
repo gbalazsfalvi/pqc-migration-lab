@@ -9,6 +9,7 @@ import hu.balazsfalvi.pqclab.integration.app.trust.KeyRegistryView;
 import hu.balazsfalvi.pqclab.integration.app.trust.PublicGeneration;
 import hu.balazsfalvi.pqclab.integration.app.trust.PublicKeyDirectory;
 import hu.balazsfalvi.pqclab.integration.app.trust.RotatingPublicDirectory;
+import hu.balazsfalvi.pqclab.integration.app.trust.SharedTrustStore;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.time.Clock;
@@ -27,16 +28,21 @@ public final class KeyLifecycleManager implements AutoCloseable {
     private final SigningIdentity identity;
     private VaultState state;
     private Map<SignatureAlgorithm, MessageSigner> signingPorts;
+    private final SharedTrustStore publicStore;
+    private boolean publicationFailed;
 
     /** Builds immutable public and private capabilities from an authenticated vault. */
-    private KeyLifecycleManager(EncryptedKeyVault vault, Clock clock, VaultState state) {
+    private KeyLifecycleManager(EncryptedKeyVault vault, Clock clock, VaultState state, SharedTrustStore publicStore)
+            throws IOException {
         this.vault = vault;
         this.clock = clock;
         this.state = state;
+        this.publicStore = publicStore;
         signingPorts = signingPorts(state);
         directory = new RotatingPublicDirectory(
                 state.issuer(), clock, lock, state.revision(), state.activeId(), publicOnly(state));
         identity = new SigningIdentity(state.issuer(), this::currentSigners);
+        if (publicStore != null) publicStore.recover(new VaultCodec().encodePublic(state));
     }
 
     /**
@@ -51,9 +57,26 @@ public final class KeyLifecycleManager implements AutoCloseable {
      */
     public static KeyLifecycleManager open(Path dataDirectory, Path secretFile, String issuer, Clock clock)
             throws IOException {
+        return open(dataDirectory, secretFile, issuer, clock, null);
+    }
+
+    /**
+     * Opens publisher-only private state with an independently mounted public trust projection.
+     *
+     * @param dataDirectory the private publisher namespace
+     * @param secretFile the external owner-only account secret
+     * @param issuer the configured publisher owner
+     * @param clock the trusted lifecycle clock
+     * @param publicStore the publisher-owned public snapshot writer
+     * @return the locked lifecycle manager
+     * @throws IOException if private or public state cannot be reconciled safely
+     */
+    public static KeyLifecycleManager open(
+            Path dataDirectory, Path secretFile, String issuer, Clock clock, SharedTrustStore publicStore)
+            throws IOException {
         var vault = EncryptedKeyVault.open(dataDirectory, secretFile, issuer, clock);
         try {
-            return new KeyLifecycleManager(vault, clock, vault.load());
+            return new KeyLifecycleManager(vault, clock, vault.load(), publicStore);
         } catch (IOException | RuntimeException failure) {
             vault.close();
             throw failure;
@@ -132,6 +155,7 @@ public final class KeyLifecycleManager implements AutoCloseable {
 
     /** Fences stale or concurrent operator actions rather than silently overwriting a newer state. */
     private void requireRevision(long expected) {
+        if (publicationFailed) throw new ApiFailure(503, "KEY_STORE_UNAVAILABLE");
         if (state.revision() != expected) throw new ApiFailure(409, "KEY_REVISION_CONFLICT");
     }
 
@@ -140,8 +164,15 @@ public final class KeyLifecycleManager implements AutoCloseable {
         var publicState = publicOnly(next);
         var nextSigners = signingPorts(next);
         try {
-            vault.save(next);
+            if (publicStore == null) {
+                vault.save(next);
+            } else {
+                // The stable OS lease spans private persistence and public publication. A pending
+                // marker makes partial commits unavailable until authenticated startup recovery.
+                publicStore.commit(new VaultCodec().encodePublic(next), () -> vault.save(next));
+            }
         } catch (IOException failure) {
+            publicationFailed = publicStore != null;
             throw new ApiFailure(503, "KEY_STORE_UNAVAILABLE");
         }
         state = next;
@@ -153,6 +184,7 @@ public final class KeyLifecycleManager implements AutoCloseable {
     private Map<SignatureAlgorithm, MessageSigner> currentSigners() {
         lock.readLock().lock();
         try {
+            if (publicationFailed) throw new ApiFailure(503, "KEY_STORE_UNAVAILABLE");
             if (signingPorts.isEmpty()) throw new ApiFailure(503, "SIGNING_KEYS_REVOKED");
             return signingPorts;
         } finally {

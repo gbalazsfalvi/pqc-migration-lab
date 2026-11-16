@@ -1,8 +1,13 @@
+# Keep formatter and container inputs stable on every checkout; binary files remain auto-detected.
 * text=auto eol=lf
-*.bat text eol=crlf
-*.jar binary
-*.zip binary
-*.png binary
-*.jpg binary
-*.jpeg binary
-*.woff2 binary
+
+# Evidence manifests describe exact HTTP/report bytes, including any original CRLF sequences.
+docs/evidence/06b-compose/** -text whitespace=cr-at-eol
+
+# The Docker build executes the Unix wrapper even when its context comes from a Windows checkout.
+gradlew text eol=lf
+gradlew.bat text eol=crlf
+Dockerfile text eol=lf
+.dockerignore text eol=lf
+compose.yaml text eol=lf
+docker/*.properties text eol=lf

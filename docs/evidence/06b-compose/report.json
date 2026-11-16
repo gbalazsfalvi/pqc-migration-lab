@@ -1,0 +1,2030 @@
+{
+  "schemaVersion" : 2,
+  "milestone" : "06B",
+  "runId" : "475f288d-cef6-4e07-8b06-265810be59d3",
+  "startedAt" : "2026-11-16T11:50:20.108967600Z",
+  "finishedAt" : "2026-11-16T11:52:07.411247Z",
+  "outcome" : "PASS",
+  "scenarioCompleted" : true,
+  "failureCode" : null,
+  "environment" : {
+    "javaRuntimeVersion" : "25.0.5+8-LTS",
+    "javaVendor" : "Eclipse Adoptium",
+    "operatingSystem" : "Windows 11",
+    "architecture" : "amd64",
+    "transport" : "Independent local Compose containers; one publisher, four receiver deployments, unchanged public trust and durable ledger",
+    "protocol" : "DSSEv1 / Ed25519 + ML-DSA-65"
+  },
+  "exchanges" : [ {
+    "sequence" : 1,
+    "phase" : 1,
+    "scenario" : "phase-1-configuration",
+    "endpoint" : "RECEIVER",
+    "method" : "GET",
+    "path" : "/api/receiver/status",
+    "observedAt" : "2026-11-16T11:51:24.031704200Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : null,
+    "requestSha256" : null,
+    "responseFile" : "http/001-phase-1-configuration.response.json",
+    "responseSha256" : "748e468d1e87b2304e344ee07e3f66e2ea3ec0335a4e04d13b3ddcf47ccead2c",
+    "failureCode" : null
+  }, {
+    "sequence" : 2,
+    "phase" : 1,
+    "scenario" : "phase-1-registry",
+    "endpoint" : "RECEIVER",
+    "method" : "GET",
+    "path" : "/api/receiver/keys",
+    "observedAt" : "2026-11-16T11:51:24.056116800Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : null,
+    "requestSha256" : null,
+    "responseFile" : "http/002-phase-1-registry.response.json",
+    "responseSha256" : "160442087675278cdc568321b0a56a6aca173eb39303d9e5a5058d2963bdb12f",
+    "failureCode" : null
+  }, {
+    "sequence" : 3,
+    "phase" : 1,
+    "scenario" : "create-classical",
+    "endpoint" : "PUBLISHER",
+    "method" : "POST",
+    "path" : "/api/publisher/envelopes",
+    "observedAt" : "2026-11-16T11:51:24.076421600Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : "http/003-create-classical.request.json",
+    "requestSha256" : "27b93c51e7e727ee9243c383defb68f9a841690578916bc393af7af4ee67c993",
+    "responseFile" : "http/003-create-classical.response.json",
+    "responseSha256" : "863b0ef295394d40d6a8ff44d5f70c07750b2c79e3b9bc1b1d86d6a023d94657",
+    "failureCode" : null
+  }, {
+    "sequence" : 4,
+    "phase" : 1,
+    "scenario" : "create-dual",
+    "endpoint" : "PUBLISHER",
+    "method" : "POST",
+    "path" : "/api/publisher/envelopes",
+    "observedAt" : "2026-11-16T11:51:24.099990100Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : "http/004-create-dual.request.json",
+    "requestSha256" : "d7ecb7c2624c80b56cd847bbfd2ac260e7e10beaa85839e8a90dd0afdaf8e775",
+    "responseFile" : "http/004-create-dual.response.json",
+    "responseSha256" : "f3f53c2b897b3d4f65f5bbf4ecfb15e585b3a4318c974795dc440c0baac19620",
+    "failureCode" : null
+  }, {
+    "sequence" : 5,
+    "phase" : 1,
+    "scenario" : "create-pqc",
+    "endpoint" : "PUBLISHER",
+    "method" : "POST",
+    "path" : "/api/publisher/envelopes",
+    "observedAt" : "2026-11-16T11:51:24.112931100Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : "http/005-create-pqc.request.json",
+    "requestSha256" : "90a5ca8c424fb26c699f1ea7d3a955720f0a55b35ab9de9f2bfa5dbd3410f022",
+    "responseFile" : "http/005-create-pqc.response.json",
+    "responseSha256" : "4914df09822ce2d337b7a18b2480236fe61e0d53cfed3e7369e92c1e90b9324c",
+    "failureCode" : null
+  }, {
+    "sequence" : 6,
+    "phase" : 1,
+    "scenario" : "phase-1-classical-evaluation",
+    "endpoint" : "RECEIVER",
+    "method" : "POST",
+    "path" : "/api/receiver/evaluations",
+    "observedAt" : "2026-11-16T11:51:24.170345Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : "http/006-phase-1-classical-evaluation.request.json",
+    "requestSha256" : "863b0ef295394d40d6a8ff44d5f70c07750b2c79e3b9bc1b1d86d6a023d94657",
+    "responseFile" : "http/006-phase-1-classical-evaluation.response.json",
+    "responseSha256" : "f041af96149d346f4413b2887e527038956273db65518e57a4a3e25e273d2386",
+    "failureCode" : null
+  }, {
+    "sequence" : 7,
+    "phase" : 1,
+    "scenario" : "phase-1-classical-delivery",
+    "endpoint" : "PUBLISHER",
+    "method" : "POST",
+    "path" : "/api/workbench/deliveries",
+    "observedAt" : "2026-11-16T11:51:24.261025100Z",
+    "expectedStatus" : 201,
+    "actualStatus" : 201,
+    "requestFile" : "http/007-phase-1-classical-delivery.request.json",
+    "requestSha256" : "863b0ef295394d40d6a8ff44d5f70c07750b2c79e3b9bc1b1d86d6a023d94657",
+    "responseFile" : "http/007-phase-1-classical-delivery.response.json",
+    "responseSha256" : "9d57a61cd0097ffd9cb3c877a62ee98ec0bff3379adc92b77b602c6ce1222cb3",
+    "failureCode" : null
+  }, {
+    "sequence" : 8,
+    "phase" : 1,
+    "scenario" : "phase-1-classical-history",
+    "endpoint" : "RECEIVER",
+    "method" : "GET",
+    "path" : "/api/receiver/releases/c6e31721-9184-4cb7-8a58-4e26f51a3535",
+    "observedAt" : "2026-11-16T11:51:24.290120700Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : null,
+    "requestSha256" : null,
+    "responseFile" : "http/008-phase-1-classical-history.response.json",
+    "responseSha256" : "f55c1c6691cc2a7e09c8c36463e82c5527dfda9867b942fcbfb163446db50cf5",
+    "failureCode" : null
+  }, {
+    "sequence" : 9,
+    "phase" : 1,
+    "scenario" : "phase-1-dual-evaluation",
+    "endpoint" : "RECEIVER",
+    "method" : "POST",
+    "path" : "/api/receiver/evaluations",
+    "observedAt" : "2026-11-16T11:51:24.349021700Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : "http/009-phase-1-dual-evaluation.request.json",
+    "requestSha256" : "f3f53c2b897b3d4f65f5bbf4ecfb15e585b3a4318c974795dc440c0baac19620",
+    "responseFile" : "http/009-phase-1-dual-evaluation.response.json",
+    "responseSha256" : "71f93088c55417a3182a234630383935c499904de2fe6096e168911cdd175fee",
+    "failureCode" : null
+  }, {
+    "sequence" : 10,
+    "phase" : 1,
+    "scenario" : "phase-1-dual-delivery",
+    "endpoint" : "PUBLISHER",
+    "method" : "POST",
+    "path" : "/api/workbench/deliveries",
+    "observedAt" : "2026-11-16T11:51:24.376131Z",
+    "expectedStatus" : 201,
+    "actualStatus" : 201,
+    "requestFile" : "http/010-phase-1-dual-delivery.request.json",
+    "requestSha256" : "f3f53c2b897b3d4f65f5bbf4ecfb15e585b3a4318c974795dc440c0baac19620",
+    "responseFile" : "http/010-phase-1-dual-delivery.response.json",
+    "responseSha256" : "47c2c6d666011bae9c2172313e1e79a2a897117f9390fa30a2b026660d803b7d",
+    "failureCode" : null
+  }, {
+    "sequence" : 11,
+    "phase" : 1,
+    "scenario" : "phase-1-dual-history",
+    "endpoint" : "RECEIVER",
+    "method" : "GET",
+    "path" : "/api/receiver/releases/15217ab3-8bc6-42af-b33f-13da174f1718",
+    "observedAt" : "2026-11-16T11:51:24.383633800Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : null,
+    "requestSha256" : null,
+    "responseFile" : "http/011-phase-1-dual-history.response.json",
+    "responseSha256" : "8e611da590444fa4a3b679891d18b73f19764095cb9677924aaac640df5cac49",
+    "failureCode" : null
+  }, {
+    "sequence" : 12,
+    "phase" : 1,
+    "scenario" : "phase-1-pqc-evaluation",
+    "endpoint" : "RECEIVER",
+    "method" : "POST",
+    "path" : "/api/receiver/evaluations",
+    "observedAt" : "2026-11-16T11:51:24.409384400Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : "http/012-phase-1-pqc-evaluation.request.json",
+    "requestSha256" : "4914df09822ce2d337b7a18b2480236fe61e0d53cfed3e7369e92c1e90b9324c",
+    "responseFile" : "http/012-phase-1-pqc-evaluation.response.json",
+    "responseSha256" : "e4c0dc793096056372eb02189a18c84043f560601965ceb8473f314882dcd7f6",
+    "failureCode" : null
+  }, {
+    "sequence" : 13,
+    "phase" : 1,
+    "scenario" : "phase-1-pqc-delivery",
+    "endpoint" : "PUBLISHER",
+    "method" : "POST",
+    "path" : "/api/workbench/deliveries",
+    "observedAt" : "2026-11-16T11:51:24.436070400Z",
+    "expectedStatus" : 403,
+    "actualStatus" : 403,
+    "requestFile" : "http/013-phase-1-pqc-delivery.request.json",
+    "requestSha256" : "4914df09822ce2d337b7a18b2480236fe61e0d53cfed3e7369e92c1e90b9324c",
+    "responseFile" : "http/013-phase-1-pqc-delivery.response.json",
+    "responseSha256" : "bffba875d430815347d29c8b3693b47ec09d2d169b43b3725542efa619b1e78a",
+    "failureCode" : null
+  }, {
+    "sequence" : 14,
+    "phase" : 1,
+    "scenario" : "phase-1-pqc-history",
+    "endpoint" : "RECEIVER",
+    "method" : "GET",
+    "path" : "/api/receiver/releases/d900ba34-0426-4159-bd76-d3835211c91b",
+    "observedAt" : "2026-11-16T11:51:24.445169600Z",
+    "expectedStatus" : 404,
+    "actualStatus" : 404,
+    "requestFile" : null,
+    "requestSha256" : null,
+    "responseFile" : "http/014-phase-1-pqc-history.response.json",
+    "responseSha256" : "e2246f7ce32a3e9adfc6d6727e03da18e59ce617d7c321a9ff3b088307dc1f0b",
+    "failureCode" : null
+  }, {
+    "sequence" : 15,
+    "phase" : 2,
+    "scenario" : "phase-2-configuration",
+    "endpoint" : "RECEIVER",
+    "method" : "GET",
+    "path" : "/api/receiver/status",
+    "observedAt" : "2026-11-16T11:51:36.186541100Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : null,
+    "requestSha256" : null,
+    "responseFile" : "http/015-phase-2-configuration.response.json",
+    "responseSha256" : "01de3eb341743e318beb2b09a55b6210bea44d51721b991dd9ebeb7858485e10",
+    "failureCode" : null
+  }, {
+    "sequence" : 16,
+    "phase" : 2,
+    "scenario" : "phase-2-registry",
+    "endpoint" : "RECEIVER",
+    "method" : "GET",
+    "path" : "/api/receiver/keys",
+    "observedAt" : "2026-11-16T11:51:36.231562400Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : null,
+    "requestSha256" : null,
+    "responseFile" : "http/016-phase-2-registry.response.json",
+    "responseSha256" : "612730aa1301e69e0377cdeba9301e76b8f42b3e9488b267a24983d970475f09",
+    "failureCode" : null
+  }, {
+    "sequence" : 17,
+    "phase" : 2,
+    "scenario" : "phase-2-classical-evaluation",
+    "endpoint" : "RECEIVER",
+    "method" : "POST",
+    "path" : "/api/receiver/evaluations",
+    "observedAt" : "2026-11-16T11:51:36.333513300Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : "http/017-phase-2-classical-evaluation.request.json",
+    "requestSha256" : "863b0ef295394d40d6a8ff44d5f70c07750b2c79e3b9bc1b1d86d6a023d94657",
+    "responseFile" : "http/017-phase-2-classical-evaluation.response.json",
+    "responseSha256" : "4b526559efe71d1ff970a8ff3a0729853a25875c50f8795c564720ed3a5cb067",
+    "failureCode" : null
+  }, {
+    "sequence" : 18,
+    "phase" : 2,
+    "scenario" : "phase-2-classical-delivery",
+    "endpoint" : "PUBLISHER",
+    "method" : "POST",
+    "path" : "/api/workbench/deliveries",
+    "observedAt" : "2026-11-16T11:51:36.434448700Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : "http/018-phase-2-classical-delivery.request.json",
+    "requestSha256" : "863b0ef295394d40d6a8ff44d5f70c07750b2c79e3b9bc1b1d86d6a023d94657",
+    "responseFile" : "http/018-phase-2-classical-delivery.response.json",
+    "responseSha256" : "2bb7d9b08e3dec3d20e058ea0b20e9ecec3b8f3155a4339861bfa5f5a25c0086",
+    "failureCode" : null
+  }, {
+    "sequence" : 19,
+    "phase" : 2,
+    "scenario" : "phase-2-classical-history",
+    "endpoint" : "RECEIVER",
+    "method" : "GET",
+    "path" : "/api/receiver/releases/c6e31721-9184-4cb7-8a58-4e26f51a3535",
+    "observedAt" : "2026-11-16T11:51:36.477461700Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : null,
+    "requestSha256" : null,
+    "responseFile" : "http/019-phase-2-classical-history.response.json",
+    "responseSha256" : "b1f33a3e506f8b388aa6c82635847646e3abaded0736ab1fea06620382179e07",
+    "failureCode" : null
+  }, {
+    "sequence" : 20,
+    "phase" : 2,
+    "scenario" : "phase-2-dual-evaluation",
+    "endpoint" : "RECEIVER",
+    "method" : "POST",
+    "path" : "/api/receiver/evaluations",
+    "observedAt" : "2026-11-16T11:51:36.561693800Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : "http/020-phase-2-dual-evaluation.request.json",
+    "requestSha256" : "f3f53c2b897b3d4f65f5bbf4ecfb15e585b3a4318c974795dc440c0baac19620",
+    "responseFile" : "http/020-phase-2-dual-evaluation.response.json",
+    "responseSha256" : "8c0ce57afc69f4e8b2c82aa5b9ac2c91e9ed5fadb371908a6d245940ef472536",
+    "failureCode" : null
+  }, {
+    "sequence" : 21,
+    "phase" : 2,
+    "scenario" : "phase-2-dual-delivery",
+    "endpoint" : "PUBLISHER",
+    "method" : "POST",
+    "path" : "/api/workbench/deliveries",
+    "observedAt" : "2026-11-16T11:51:36.599337Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : "http/021-phase-2-dual-delivery.request.json",
+    "requestSha256" : "f3f53c2b897b3d4f65f5bbf4ecfb15e585b3a4318c974795dc440c0baac19620",
+    "responseFile" : "http/021-phase-2-dual-delivery.response.json",
+    "responseSha256" : "1c639254adef94ca543e1fa3fd8716d25a205c07d858fd9ffbfe7b3894e37aab",
+    "failureCode" : null
+  }, {
+    "sequence" : 22,
+    "phase" : 2,
+    "scenario" : "phase-2-dual-history",
+    "endpoint" : "RECEIVER",
+    "method" : "GET",
+    "path" : "/api/receiver/releases/15217ab3-8bc6-42af-b33f-13da174f1718",
+    "observedAt" : "2026-11-16T11:51:36.608683500Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : null,
+    "requestSha256" : null,
+    "responseFile" : "http/022-phase-2-dual-history.response.json",
+    "responseSha256" : "957237854e1062eec8c26810a3ef387af488d8938c7fdfd7d7d0d634e914f9c5",
+    "failureCode" : null
+  }, {
+    "sequence" : 23,
+    "phase" : 2,
+    "scenario" : "phase-2-pqc-evaluation",
+    "endpoint" : "RECEIVER",
+    "method" : "POST",
+    "path" : "/api/receiver/evaluations",
+    "observedAt" : "2026-11-16T11:51:36.643156800Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : "http/023-phase-2-pqc-evaluation.request.json",
+    "requestSha256" : "4914df09822ce2d337b7a18b2480236fe61e0d53cfed3e7369e92c1e90b9324c",
+    "responseFile" : "http/023-phase-2-pqc-evaluation.response.json",
+    "responseSha256" : "cd7e261b5a469d9c6b1b1fa59b053be8b359347682332c72b7901e4fc797169c",
+    "failureCode" : null
+  }, {
+    "sequence" : 24,
+    "phase" : 2,
+    "scenario" : "phase-2-pqc-delivery",
+    "endpoint" : "PUBLISHER",
+    "method" : "POST",
+    "path" : "/api/workbench/deliveries",
+    "observedAt" : "2026-11-16T11:51:36.682182Z",
+    "expectedStatus" : 403,
+    "actualStatus" : 403,
+    "requestFile" : "http/024-phase-2-pqc-delivery.request.json",
+    "requestSha256" : "4914df09822ce2d337b7a18b2480236fe61e0d53cfed3e7369e92c1e90b9324c",
+    "responseFile" : "http/024-phase-2-pqc-delivery.response.json",
+    "responseSha256" : "bffba875d430815347d29c8b3693b47ec09d2d169b43b3725542efa619b1e78a",
+    "failureCode" : null
+  }, {
+    "sequence" : 25,
+    "phase" : 2,
+    "scenario" : "phase-2-pqc-history",
+    "endpoint" : "RECEIVER",
+    "method" : "GET",
+    "path" : "/api/receiver/releases/d900ba34-0426-4159-bd76-d3835211c91b",
+    "observedAt" : "2026-11-16T11:51:36.691623500Z",
+    "expectedStatus" : 404,
+    "actualStatus" : 404,
+    "requestFile" : null,
+    "requestSha256" : null,
+    "responseFile" : "http/025-phase-2-pqc-history.response.json",
+    "responseSha256" : "e2246f7ce32a3e9adfc6d6727e03da18e59ce617d7c321a9ff3b088307dc1f0b",
+    "failureCode" : null
+  }, {
+    "sequence" : 26,
+    "phase" : 3,
+    "scenario" : "phase-3-configuration",
+    "endpoint" : "RECEIVER",
+    "method" : "GET",
+    "path" : "/api/receiver/status",
+    "observedAt" : "2026-11-16T11:51:47.499455100Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : null,
+    "requestSha256" : null,
+    "responseFile" : "http/026-phase-3-configuration.response.json",
+    "responseSha256" : "d44e2d407e5d694363c0d84fd3e7ae3140c6d199e41fa72fa2699f50746d06a7",
+    "failureCode" : null
+  }, {
+    "sequence" : 27,
+    "phase" : 3,
+    "scenario" : "phase-3-registry",
+    "endpoint" : "RECEIVER",
+    "method" : "GET",
+    "path" : "/api/receiver/keys",
+    "observedAt" : "2026-11-16T11:51:47.528291900Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : null,
+    "requestSha256" : null,
+    "responseFile" : "http/027-phase-3-registry.response.json",
+    "responseSha256" : "eff299ea07331b891e6cd5e313107c7949026b4d99861260175e52fe7714c25b",
+    "failureCode" : null
+  }, {
+    "sequence" : 28,
+    "phase" : 3,
+    "scenario" : "phase-3-classical-evaluation",
+    "endpoint" : "RECEIVER",
+    "method" : "POST",
+    "path" : "/api/receiver/evaluations",
+    "observedAt" : "2026-11-16T11:51:47.606021Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : "http/028-phase-3-classical-evaluation.request.json",
+    "requestSha256" : "863b0ef295394d40d6a8ff44d5f70c07750b2c79e3b9bc1b1d86d6a023d94657",
+    "responseFile" : "http/028-phase-3-classical-evaluation.response.json",
+    "responseSha256" : "f3600784c798e80707fcde1f285c7375801d58777a44299952a2822fab44f91b",
+    "failureCode" : null
+  }, {
+    "sequence" : 29,
+    "phase" : 3,
+    "scenario" : "phase-3-classical-delivery",
+    "endpoint" : "PUBLISHER",
+    "method" : "POST",
+    "path" : "/api/workbench/deliveries",
+    "observedAt" : "2026-11-16T11:51:47.642662700Z",
+    "expectedStatus" : 403,
+    "actualStatus" : 403,
+    "requestFile" : "http/029-phase-3-classical-delivery.request.json",
+    "requestSha256" : "863b0ef295394d40d6a8ff44d5f70c07750b2c79e3b9bc1b1d86d6a023d94657",
+    "responseFile" : "http/029-phase-3-classical-delivery.response.json",
+    "responseSha256" : "bffba875d430815347d29c8b3693b47ec09d2d169b43b3725542efa619b1e78a",
+    "failureCode" : null
+  }, {
+    "sequence" : 30,
+    "phase" : 3,
+    "scenario" : "phase-3-classical-history",
+    "endpoint" : "RECEIVER",
+    "method" : "GET",
+    "path" : "/api/receiver/releases/c6e31721-9184-4cb7-8a58-4e26f51a3535",
+    "observedAt" : "2026-11-16T11:51:47.668621100Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : null,
+    "requestSha256" : null,
+    "responseFile" : "http/030-phase-3-classical-history.response.json",
+    "responseSha256" : "a109bb0b86c63b6c015631399cca35e0d9d96af9fa4379b765317fc25514964e",
+    "failureCode" : null
+  }, {
+    "sequence" : 31,
+    "phase" : 3,
+    "scenario" : "phase-3-dual-evaluation",
+    "endpoint" : "RECEIVER",
+    "method" : "POST",
+    "path" : "/api/receiver/evaluations",
+    "observedAt" : "2026-11-16T11:51:47.721454300Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : "http/031-phase-3-dual-evaluation.request.json",
+    "requestSha256" : "f3f53c2b897b3d4f65f5bbf4ecfb15e585b3a4318c974795dc440c0baac19620",
+    "responseFile" : "http/031-phase-3-dual-evaluation.response.json",
+    "responseSha256" : "6b59b61746d0846d66a95812acc7be3e76e9103fb2d8de90a85a21bb7f786ed7",
+    "failureCode" : null
+  }, {
+    "sequence" : 32,
+    "phase" : 3,
+    "scenario" : "phase-3-dual-delivery",
+    "endpoint" : "PUBLISHER",
+    "method" : "POST",
+    "path" : "/api/workbench/deliveries",
+    "observedAt" : "2026-11-16T11:51:47.771106400Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : "http/032-phase-3-dual-delivery.request.json",
+    "requestSha256" : "f3f53c2b897b3d4f65f5bbf4ecfb15e585b3a4318c974795dc440c0baac19620",
+    "responseFile" : "http/032-phase-3-dual-delivery.response.json",
+    "responseSha256" : "08bae1ddb2cf62f05747d32e849965a4ce37dd9aeb0481e48c56c355f4fe9a67",
+    "failureCode" : null
+  }, {
+    "sequence" : 33,
+    "phase" : 3,
+    "scenario" : "phase-3-dual-history",
+    "endpoint" : "RECEIVER",
+    "method" : "GET",
+    "path" : "/api/receiver/releases/15217ab3-8bc6-42af-b33f-13da174f1718",
+    "observedAt" : "2026-11-16T11:51:47.779287900Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : null,
+    "requestSha256" : null,
+    "responseFile" : "http/033-phase-3-dual-history.response.json",
+    "responseSha256" : "29511cfc34fd67c703864405645ffd5d51d4e6a6d9c6327ee1cfe8f7b6b5e012",
+    "failureCode" : null
+  }, {
+    "sequence" : 34,
+    "phase" : 3,
+    "scenario" : "phase-3-pqc-evaluation",
+    "endpoint" : "RECEIVER",
+    "method" : "POST",
+    "path" : "/api/receiver/evaluations",
+    "observedAt" : "2026-11-16T11:51:47.808488900Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : "http/034-phase-3-pqc-evaluation.request.json",
+    "requestSha256" : "4914df09822ce2d337b7a18b2480236fe61e0d53cfed3e7369e92c1e90b9324c",
+    "responseFile" : "http/034-phase-3-pqc-evaluation.response.json",
+    "responseSha256" : "a7d4f00458f7010f67cd8a20fe765ec34365959c2529b97f23f0f6e614d53805",
+    "failureCode" : null
+  }, {
+    "sequence" : 35,
+    "phase" : 3,
+    "scenario" : "phase-3-pqc-delivery",
+    "endpoint" : "PUBLISHER",
+    "method" : "POST",
+    "path" : "/api/workbench/deliveries",
+    "observedAt" : "2026-11-16T11:51:47.827468600Z",
+    "expectedStatus" : 403,
+    "actualStatus" : 403,
+    "requestFile" : "http/035-phase-3-pqc-delivery.request.json",
+    "requestSha256" : "4914df09822ce2d337b7a18b2480236fe61e0d53cfed3e7369e92c1e90b9324c",
+    "responseFile" : "http/035-phase-3-pqc-delivery.response.json",
+    "responseSha256" : "bffba875d430815347d29c8b3693b47ec09d2d169b43b3725542efa619b1e78a",
+    "failureCode" : null
+  }, {
+    "sequence" : 36,
+    "phase" : 3,
+    "scenario" : "phase-3-pqc-history",
+    "endpoint" : "RECEIVER",
+    "method" : "GET",
+    "path" : "/api/receiver/releases/d900ba34-0426-4159-bd76-d3835211c91b",
+    "observedAt" : "2026-11-16T11:51:47.834894100Z",
+    "expectedStatus" : 404,
+    "actualStatus" : 404,
+    "requestFile" : null,
+    "requestSha256" : null,
+    "responseFile" : "http/036-phase-3-pqc-history.response.json",
+    "responseSha256" : "e2246f7ce32a3e9adfc6d6727e03da18e59ce617d7c321a9ff3b088307dc1f0b",
+    "failureCode" : null
+  }, {
+    "sequence" : 37,
+    "phase" : 3,
+    "scenario" : "phase-3-unsigned-downgrade",
+    "endpoint" : "PUBLISHER",
+    "method" : "POST",
+    "path" : "/api/workbench/deliveries",
+    "observedAt" : "2026-11-16T11:51:47.860656200Z",
+    "expectedStatus" : 403,
+    "actualStatus" : 403,
+    "requestFile" : "http/037-phase-3-unsigned-downgrade.request.json",
+    "requestSha256" : "9093c7acadf85f06314a0df0914c0725687805c1e25f19431fbaf82f73f5df22",
+    "responseFile" : "http/037-phase-3-unsigned-downgrade.response.json",
+    "responseSha256" : "bffba875d430815347d29c8b3693b47ec09d2d169b43b3725542efa619b1e78a",
+    "failureCode" : null
+  }, {
+    "sequence" : 38,
+    "phase" : 4,
+    "scenario" : "phase-4-configuration",
+    "endpoint" : "RECEIVER",
+    "method" : "GET",
+    "path" : "/api/receiver/status",
+    "observedAt" : "2026-11-16T11:52:03.462859100Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : null,
+    "requestSha256" : null,
+    "responseFile" : "http/038-phase-4-configuration.response.json",
+    "responseSha256" : "8fe2b1d0a57ed854c77df5f17d948f62254959db3ca6caaa8a6fae7a7c77fc22",
+    "failureCode" : null
+  }, {
+    "sequence" : 39,
+    "phase" : 4,
+    "scenario" : "phase-4-registry",
+    "endpoint" : "RECEIVER",
+    "method" : "GET",
+    "path" : "/api/receiver/keys",
+    "observedAt" : "2026-11-16T11:52:03.505747700Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : null,
+    "requestSha256" : null,
+    "responseFile" : "http/039-phase-4-registry.response.json",
+    "responseSha256" : "0dd4e1efd4a3030d6ab542454061095bab3fe43b33276402fb5ec0e7366dcc70",
+    "failureCode" : null
+  }, {
+    "sequence" : 40,
+    "phase" : 4,
+    "scenario" : "phase-4-classical-evaluation",
+    "endpoint" : "RECEIVER",
+    "method" : "POST",
+    "path" : "/api/receiver/evaluations",
+    "observedAt" : "2026-11-16T11:52:03.602399900Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : "http/040-phase-4-classical-evaluation.request.json",
+    "requestSha256" : "863b0ef295394d40d6a8ff44d5f70c07750b2c79e3b9bc1b1d86d6a023d94657",
+    "responseFile" : "http/040-phase-4-classical-evaluation.response.json",
+    "responseSha256" : "01d2fafd843766c347bc2929f7b003b8036f49fefdfcb776dcfc7b050c6e1283",
+    "failureCode" : null
+  }, {
+    "sequence" : 41,
+    "phase" : 4,
+    "scenario" : "phase-4-classical-delivery",
+    "endpoint" : "PUBLISHER",
+    "method" : "POST",
+    "path" : "/api/workbench/deliveries",
+    "observedAt" : "2026-11-16T11:52:03.651119400Z",
+    "expectedStatus" : 403,
+    "actualStatus" : 403,
+    "requestFile" : "http/041-phase-4-classical-delivery.request.json",
+    "requestSha256" : "863b0ef295394d40d6a8ff44d5f70c07750b2c79e3b9bc1b1d86d6a023d94657",
+    "responseFile" : "http/041-phase-4-classical-delivery.response.json",
+    "responseSha256" : "bffba875d430815347d29c8b3693b47ec09d2d169b43b3725542efa619b1e78a",
+    "failureCode" : null
+  }, {
+    "sequence" : 42,
+    "phase" : 4,
+    "scenario" : "phase-4-classical-history",
+    "endpoint" : "RECEIVER",
+    "method" : "GET",
+    "path" : "/api/receiver/releases/c6e31721-9184-4cb7-8a58-4e26f51a3535",
+    "observedAt" : "2026-11-16T11:52:03.699205200Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : null,
+    "requestSha256" : null,
+    "responseFile" : "http/042-phase-4-classical-history.response.json",
+    "responseSha256" : "20fc174d08f61c4ab450b276ba061114b9467864813f664181c0cf81b90d4b39",
+    "failureCode" : null
+  }, {
+    "sequence" : 43,
+    "phase" : 4,
+    "scenario" : "phase-4-dual-evaluation",
+    "endpoint" : "RECEIVER",
+    "method" : "POST",
+    "path" : "/api/receiver/evaluations",
+    "observedAt" : "2026-11-16T11:52:03.781198600Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : "http/043-phase-4-dual-evaluation.request.json",
+    "requestSha256" : "f3f53c2b897b3d4f65f5bbf4ecfb15e585b3a4318c974795dc440c0baac19620",
+    "responseFile" : "http/043-phase-4-dual-evaluation.response.json",
+    "responseSha256" : "f81477a9a1c919dc45466fcfa8ce2cd78f102c879488b4d63f01733c21c30e27",
+    "failureCode" : null
+  }, {
+    "sequence" : 44,
+    "phase" : 4,
+    "scenario" : "phase-4-dual-delivery",
+    "endpoint" : "PUBLISHER",
+    "method" : "POST",
+    "path" : "/api/workbench/deliveries",
+    "observedAt" : "2026-11-16T11:52:03.847397700Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : "http/044-phase-4-dual-delivery.request.json",
+    "requestSha256" : "f3f53c2b897b3d4f65f5bbf4ecfb15e585b3a4318c974795dc440c0baac19620",
+    "responseFile" : "http/044-phase-4-dual-delivery.response.json",
+    "responseSha256" : "24f49674682e8014434d95f132ab6c82b495374047f36d07e0af73ad711ae0eb",
+    "failureCode" : null
+  }, {
+    "sequence" : 45,
+    "phase" : 4,
+    "scenario" : "phase-4-dual-history",
+    "endpoint" : "RECEIVER",
+    "method" : "GET",
+    "path" : "/api/receiver/releases/15217ab3-8bc6-42af-b33f-13da174f1718",
+    "observedAt" : "2026-11-16T11:52:03.857979Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : null,
+    "requestSha256" : null,
+    "responseFile" : "http/045-phase-4-dual-history.response.json",
+    "responseSha256" : "3a298b0a1d5040751510e0b2680a03d7a3f67a06a9bbd0f591a7be0a93c93f0d",
+    "failureCode" : null
+  }, {
+    "sequence" : 46,
+    "phase" : 4,
+    "scenario" : "phase-4-pqc-evaluation",
+    "endpoint" : "RECEIVER",
+    "method" : "POST",
+    "path" : "/api/receiver/evaluations",
+    "observedAt" : "2026-11-16T11:52:03.904170200Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : "http/046-phase-4-pqc-evaluation.request.json",
+    "requestSha256" : "4914df09822ce2d337b7a18b2480236fe61e0d53cfed3e7369e92c1e90b9324c",
+    "responseFile" : "http/046-phase-4-pqc-evaluation.response.json",
+    "responseSha256" : "110e264bfbcc57896054569c2bd85a9d5f043e3ddeb836f99a6c43ec6b4e9ad2",
+    "failureCode" : null
+  }, {
+    "sequence" : 47,
+    "phase" : 4,
+    "scenario" : "phase-4-pqc-delivery",
+    "endpoint" : "PUBLISHER",
+    "method" : "POST",
+    "path" : "/api/workbench/deliveries",
+    "observedAt" : "2026-11-16T11:52:03.933375900Z",
+    "expectedStatus" : 201,
+    "actualStatus" : 201,
+    "requestFile" : "http/047-phase-4-pqc-delivery.request.json",
+    "requestSha256" : "4914df09822ce2d337b7a18b2480236fe61e0d53cfed3e7369e92c1e90b9324c",
+    "responseFile" : "http/047-phase-4-pqc-delivery.response.json",
+    "responseSha256" : "cba50fdcfcf11e1ad785d480c663f591b8d161cebdc28fc5de17be4877ad3fb3",
+    "failureCode" : null
+  }, {
+    "sequence" : 48,
+    "phase" : 4,
+    "scenario" : "phase-4-pqc-history",
+    "endpoint" : "RECEIVER",
+    "method" : "GET",
+    "path" : "/api/receiver/releases/d900ba34-0426-4159-bd76-d3835211c91b",
+    "observedAt" : "2026-11-16T11:52:03.952497400Z",
+    "expectedStatus" : 200,
+    "actualStatus" : 200,
+    "requestFile" : null,
+    "requestSha256" : null,
+    "responseFile" : "http/048-phase-4-pqc-history.response.json",
+    "responseSha256" : "c67f2a277efa952d7b18a40c196ece4379e7ba12a0a0c1729b31a6ae930d03bd",
+    "failureCode" : null
+  }, {
+    "sequence" : 49,
+    "phase" : 4,
+    "scenario" : "phase-4-unsigned-downgrade",
+    "endpoint" : "PUBLISHER",
+    "method" : "POST",
+    "path" : "/api/workbench/deliveries",
+    "observedAt" : "2026-11-16T11:52:03.978421300Z",
+    "expectedStatus" : 403,
+    "actualStatus" : 403,
+    "requestFile" : "http/049-phase-4-unsigned-downgrade.request.json",
+    "requestSha256" : "9093c7acadf85f06314a0df0914c0725687805c1e25f19431fbaf82f73f5df22",
+    "responseFile" : "http/049-phase-4-unsigned-downgrade.response.json",
+    "responseSha256" : "bffba875d430815347d29c8b3693b47ec09d2d169b43b3725542efa619b1e78a",
+    "failureCode" : null
+  } ],
+  "checks" : [ {
+    "id" : "roles.independent",
+    "description" : "Publisher and receiver are distinct live services.",
+    "expected" : "false",
+    "observed" : "false",
+    "passed" : true,
+    "exchanges" : [ ]
+  }, {
+    "id" : "phase-1-configuration.http",
+    "description" : "Observed HTTP status for phase-1-configuration",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 1 ]
+  }, {
+    "id" : "phase-1.live-policy",
+    "description" : "The real receiver enforces this phase's startup policy.",
+    "expected" : "CLASSICAL_ONLY",
+    "observed" : "CLASSICAL_ONLY",
+    "passed" : true,
+    "exchanges" : [ 1 ]
+  }, {
+    "id" : "phase-1.claims-and-time",
+    "description" : "The same signed identity, audience and freshness remain enforced.",
+    "expected" : "[release-publisher, urn:pqclab:release-receiver, PT5M, PT30S]",
+    "observed" : "[release-publisher, urn:pqclab:release-receiver, PT5M, PT30S]",
+    "passed" : true,
+    "exchanges" : [ 1 ]
+  }, {
+    "id" : "phase-1-registry.http",
+    "description" : "Observed HTTP status for phase-1-registry",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 2 ]
+  }, {
+    "id" : "trust.initial",
+    "description" : "The rehearsal begins with one managed public generation at revision 1.",
+    "expected" : "[true, 1, 1]",
+    "observed" : "[true, 1, 1]",
+    "passed" : true,
+    "exchanges" : [ 2 ]
+  }, {
+    "id" : "create-classical.http",
+    "description" : "Observed HTTP status for create-classical",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 3 ]
+  }, {
+    "id" : "create-dual.http",
+    "description" : "Observed HTTP status for create-dual",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 4 ]
+  }, {
+    "id" : "create-pqc.http",
+    "description" : "Observed HTTP status for create-pqc",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 5 ]
+  }, {
+    "id" : "events.distinct",
+    "description" : "The publisher creates three independently identified events.",
+    "expected" : "3",
+    "observed" : "3",
+    "passed" : true,
+    "exchanges" : [ ]
+  }, {
+    "id" : "phase-1-classical-evaluation.http",
+    "description" : "Observed HTTP status for phase-1-classical-evaluation",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 6 ]
+  }, {
+    "id" : "phase-1-classical.evaluation-policy",
+    "description" : "Read-only Java observations identify the actual live requirement.",
+    "expected" : "CLASSICAL_ONLY",
+    "observed" : "CLASSICAL_ONLY",
+    "passed" : true,
+    "exchanges" : [ 6 ]
+  }, {
+    "id" : "phase-1-classical.verified-signatures",
+    "description" : "Java independently verifies this sender's actual signatures.",
+    "expected" : "[true, false]",
+    "observed" : "[true, false]",
+    "passed" : true,
+    "exchanges" : [ 6 ]
+  }, {
+    "id" : "phase-1-classical-delivery.http",
+    "description" : "Observed HTTP status for phase-1-classical-delivery",
+    "expected" : "201",
+    "observed" : "201",
+    "passed" : true,
+    "exchanges" : [ 7 ]
+  }, {
+    "id" : "phase-1-classical.delivery-status",
+    "description" : "Delivery creates or reuses the one durable business result.",
+    "expected" : "ACCEPTED",
+    "observed" : "ACCEPTED",
+    "passed" : true,
+    "exchanges" : [ 7 ]
+  }, {
+    "id" : "phase-1-classical.first-acceptance",
+    "description" : "A new result records its actual first policy and signature evidence.",
+    "expected" : "[c6e31721-9184-4cb7-8a58-4e26f51a3535, CLASSICAL_ONLY, true, false]",
+    "observed" : "[c6e31721-9184-4cb7-8a58-4e26f51a3535, CLASSICAL_ONLY, true, false]",
+    "passed" : true,
+    "exchanges" : [ 7 ]
+  }, {
+    "id" : "phase-1-classical-delivery.status",
+    "description" : "The response identifies the observed delivery or historical query.",
+    "expected" : "ACCEPTED",
+    "observed" : "ACCEPTED",
+    "passed" : true,
+    "exchanges" : [ 7 ]
+  }, {
+    "id" : "phase-1-classical-delivery.enforced-policy",
+    "description" : "The current requirement is reported separately from original acceptance.",
+    "expected" : "CLASSICAL_ONLY",
+    "observed" : "CLASSICAL_ONLY",
+    "passed" : true,
+    "exchanges" : [ 7 ]
+  }, {
+    "id" : "phase-1-classical-delivery.original-preserved",
+    "description" : "Every original receipt identity, claim, time, policy and signature result remains unchanged.",
+    "expected" : "{\"receiptId\":\"dd6d8ceb-b6e5-411a-a56e-632fce125d59\",\"eventId\":\"c6e31721-9184-4cb7-8a58-4e26f51a3535\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.0\",\"acceptedAt\":\"2026-11-16T11:51:24.219107933Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":false}}",
+    "observed" : "{\"receiptId\":\"dd6d8ceb-b6e5-411a-a56e-632fce125d59\",\"eventId\":\"c6e31721-9184-4cb7-8a58-4e26f51a3535\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.0\",\"acceptedAt\":\"2026-11-16T11:51:24.219107933Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":false}}",
+    "passed" : true,
+    "exchanges" : [ 7, 7 ]
+  }, {
+    "id" : "phase-1-classical-history.http",
+    "description" : "Observed HTTP status for phase-1-classical-history",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 8 ]
+  }, {
+    "id" : "phase-1-classical-history.status",
+    "description" : "The response identifies the observed delivery or historical query.",
+    "expected" : "STORED",
+    "observed" : "STORED",
+    "passed" : true,
+    "exchanges" : [ 8 ]
+  }, {
+    "id" : "phase-1-classical-history.enforced-policy",
+    "description" : "The current requirement is reported separately from original acceptance.",
+    "expected" : "CLASSICAL_ONLY",
+    "observed" : "CLASSICAL_ONLY",
+    "passed" : true,
+    "exchanges" : [ 8 ]
+  }, {
+    "id" : "phase-1-classical-history.original-preserved",
+    "description" : "Every original receipt identity, claim, time, policy and signature result remains unchanged.",
+    "expected" : "{\"receiptId\":\"dd6d8ceb-b6e5-411a-a56e-632fce125d59\",\"eventId\":\"c6e31721-9184-4cb7-8a58-4e26f51a3535\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.0\",\"acceptedAt\":\"2026-11-16T11:51:24.219107933Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":false}}",
+    "observed" : "{\"receiptId\":\"dd6d8ceb-b6e5-411a-a56e-632fce125d59\",\"eventId\":\"c6e31721-9184-4cb7-8a58-4e26f51a3535\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.0\",\"acceptedAt\":\"2026-11-16T11:51:24.219107933Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":false}}",
+    "passed" : true,
+    "exchanges" : [ 7, 8 ]
+  }, {
+    "id" : "phase-1-dual-evaluation.http",
+    "description" : "Observed HTTP status for phase-1-dual-evaluation",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 9 ]
+  }, {
+    "id" : "phase-1-dual.evaluation-policy",
+    "description" : "Read-only Java observations identify the actual live requirement.",
+    "expected" : "CLASSICAL_ONLY",
+    "observed" : "CLASSICAL_ONLY",
+    "passed" : true,
+    "exchanges" : [ 9 ]
+  }, {
+    "id" : "phase-1-dual.verified-signatures",
+    "description" : "Java independently verifies this sender's actual signatures.",
+    "expected" : "[true, true]",
+    "observed" : "[true, true]",
+    "passed" : true,
+    "exchanges" : [ 9 ]
+  }, {
+    "id" : "phase-1-dual-delivery.http",
+    "description" : "Observed HTTP status for phase-1-dual-delivery",
+    "expected" : "201",
+    "observed" : "201",
+    "passed" : true,
+    "exchanges" : [ 10 ]
+  }, {
+    "id" : "phase-1-dual.delivery-status",
+    "description" : "Delivery creates or reuses the one durable business result.",
+    "expected" : "ACCEPTED",
+    "observed" : "ACCEPTED",
+    "passed" : true,
+    "exchanges" : [ 10 ]
+  }, {
+    "id" : "phase-1-dual.first-acceptance",
+    "description" : "A new result records its actual first policy and signature evidence.",
+    "expected" : "[15217ab3-8bc6-42af-b33f-13da174f1718, CLASSICAL_ONLY, true, true]",
+    "observed" : "[15217ab3-8bc6-42af-b33f-13da174f1718, CLASSICAL_ONLY, true, true]",
+    "passed" : true,
+    "exchanges" : [ 10 ]
+  }, {
+    "id" : "phase-1-dual-delivery.status",
+    "description" : "The response identifies the observed delivery or historical query.",
+    "expected" : "ACCEPTED",
+    "observed" : "ACCEPTED",
+    "passed" : true,
+    "exchanges" : [ 10 ]
+  }, {
+    "id" : "phase-1-dual-delivery.enforced-policy",
+    "description" : "The current requirement is reported separately from original acceptance.",
+    "expected" : "CLASSICAL_ONLY",
+    "observed" : "CLASSICAL_ONLY",
+    "passed" : true,
+    "exchanges" : [ 10 ]
+  }, {
+    "id" : "phase-1-dual-delivery.original-preserved",
+    "description" : "Every original receipt identity, claim, time, policy and signature result remains unchanged.",
+    "expected" : "{\"receiptId\":\"def52704-fe4f-456c-aaa6-7598e4e86f02\",\"eventId\":\"15217ab3-8bc6-42af-b33f-13da174f1718\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.1\",\"acceptedAt\":\"2026-11-16T11:51:24.366564240Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":true}}",
+    "observed" : "{\"receiptId\":\"def52704-fe4f-456c-aaa6-7598e4e86f02\",\"eventId\":\"15217ab3-8bc6-42af-b33f-13da174f1718\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.1\",\"acceptedAt\":\"2026-11-16T11:51:24.366564240Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":true}}",
+    "passed" : true,
+    "exchanges" : [ 10, 10 ]
+  }, {
+    "id" : "phase-1-dual-history.http",
+    "description" : "Observed HTTP status for phase-1-dual-history",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 11 ]
+  }, {
+    "id" : "phase-1-dual-history.status",
+    "description" : "The response identifies the observed delivery or historical query.",
+    "expected" : "STORED",
+    "observed" : "STORED",
+    "passed" : true,
+    "exchanges" : [ 11 ]
+  }, {
+    "id" : "phase-1-dual-history.enforced-policy",
+    "description" : "The current requirement is reported separately from original acceptance.",
+    "expected" : "CLASSICAL_ONLY",
+    "observed" : "CLASSICAL_ONLY",
+    "passed" : true,
+    "exchanges" : [ 11 ]
+  }, {
+    "id" : "phase-1-dual-history.original-preserved",
+    "description" : "Every original receipt identity, claim, time, policy and signature result remains unchanged.",
+    "expected" : "{\"receiptId\":\"def52704-fe4f-456c-aaa6-7598e4e86f02\",\"eventId\":\"15217ab3-8bc6-42af-b33f-13da174f1718\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.1\",\"acceptedAt\":\"2026-11-16T11:51:24.366564240Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":true}}",
+    "observed" : "{\"receiptId\":\"def52704-fe4f-456c-aaa6-7598e4e86f02\",\"eventId\":\"15217ab3-8bc6-42af-b33f-13da174f1718\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.1\",\"acceptedAt\":\"2026-11-16T11:51:24.366564240Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":true}}",
+    "passed" : true,
+    "exchanges" : [ 10, 11 ]
+  }, {
+    "id" : "phase-1-pqc-evaluation.http",
+    "description" : "Observed HTTP status for phase-1-pqc-evaluation",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 12 ]
+  }, {
+    "id" : "phase-1-pqc.evaluation-policy",
+    "description" : "Read-only Java observations identify the actual live requirement.",
+    "expected" : "CLASSICAL_ONLY",
+    "observed" : "CLASSICAL_ONLY",
+    "passed" : true,
+    "exchanges" : [ 12 ]
+  }, {
+    "id" : "phase-1-pqc.verified-signatures",
+    "description" : "Java independently verifies this sender's actual signatures.",
+    "expected" : "[false, true]",
+    "observed" : "[false, true]",
+    "passed" : true,
+    "exchanges" : [ 12 ]
+  }, {
+    "id" : "phase-1-pqc-delivery.http",
+    "description" : "Observed HTTP status for phase-1-pqc-delivery",
+    "expected" : "403",
+    "observed" : "403",
+    "passed" : true,
+    "exchanges" : [ 13 ]
+  }, {
+    "id" : "phase-1-pqc.policy-rejected",
+    "description" : "Insufficient signatures fail the live requirement even after prior acceptance.",
+    "expected" : "POLICY_REJECTED",
+    "observed" : "POLICY_REJECTED",
+    "passed" : true,
+    "exchanges" : [ 13 ]
+  }, {
+    "id" : "phase-1-pqc-history.http",
+    "description" : "Observed HTTP status for phase-1-pqc-history",
+    "expected" : "404",
+    "observed" : "404",
+    "passed" : true,
+    "exchanges" : [ 14 ]
+  }, {
+    "id" : "phase-1-pqc.no-write",
+    "description" : "Rejected/evaluated events have no durable result.",
+    "expected" : "RELEASE_NOT_FOUND",
+    "observed" : "RELEASE_NOT_FOUND",
+    "passed" : true,
+    "exchanges" : [ 14 ]
+  }, {
+    "id" : "phase-2.receiver-replaced",
+    "description" : "Only the receiver receives new startup settings.",
+    "expected" : "false",
+    "observed" : "false",
+    "passed" : true,
+    "exchanges" : [ ]
+  }, {
+    "id" : "phase-2.publisher-survived",
+    "description" : "The original publisher remains running.",
+    "expected" : "true",
+    "observed" : "true",
+    "passed" : true,
+    "exchanges" : [ ]
+  }, {
+    "id" : "phase-2.endpoints-preserved",
+    "description" : "Both owned HTTP endpoints remain unchanged.",
+    "expected" : "true",
+    "observed" : "true",
+    "passed" : true,
+    "exchanges" : [ ]
+  }, {
+    "id" : "phase-2-configuration.http",
+    "description" : "Observed HTTP status for phase-2-configuration",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 15 ]
+  }, {
+    "id" : "phase-2.live-policy",
+    "description" : "The real receiver enforces this phase's startup policy.",
+    "expected" : "SHADOW_PQC",
+    "observed" : "SHADOW_PQC",
+    "passed" : true,
+    "exchanges" : [ 15 ]
+  }, {
+    "id" : "phase-2.claims-and-time",
+    "description" : "The same signed identity, audience and freshness remain enforced.",
+    "expected" : "[release-publisher, urn:pqclab:release-receiver, PT5M, PT30S]",
+    "observed" : "[release-publisher, urn:pqclab:release-receiver, PT5M, PT30S]",
+    "passed" : true,
+    "exchanges" : [ 15 ]
+  }, {
+    "id" : "phase-2-registry.http",
+    "description" : "Observed HTTP status for phase-2-registry",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 16 ]
+  }, {
+    "id" : "phase-2.trust-preserved",
+    "description" : "Policy deployment does not rotate or replace any public trust.",
+    "expected" : "{\"managed\":true,\"revision\":1,\"issuer\":\"release-publisher\",\"activeGenerationId\":\"9130d72e-d099-4d07-9225-f38786727bec\",\"gracePeriodSeconds\":600,\"maximumGenerations\":16,\"generations\":[{\"id\":\"9130d72e-d099-4d07-9225-f38786727bec\",\"sequence\":1,\"state\":\"ACTIVE\",\"createdAt\":\"2026-11-16T11:51:08.959907218Z\",\"retiringAt\":null,\"acceptUntil\":null,\"revokedAt\":null,\"keys\":[{\"id\":\"9130d72e-d099-4d07-9225-f38786727bec:ED25519\",\"algorithm\":\"ED25519\",\"spkiSha256\":\"9731a4e3f1322afe9039587145fc2d88e71ba1364717a9f37670356a5d261800\",\"spkiBytes\":44},{\"id\":\"9130d72e-d099-4d07-9225-f38786727bec:ML_DSA_65\",\"algorithm\":\"ML_DSA_65\",\"spkiSha256\":\"95209e6d129dc93413677b9a95fc8843cc7e9114a5772776fb34639a26234c4a\",\"spkiBytes\":1974}]}]}",
+    "observed" : "{\"managed\":true,\"revision\":1,\"issuer\":\"release-publisher\",\"activeGenerationId\":\"9130d72e-d099-4d07-9225-f38786727bec\",\"gracePeriodSeconds\":600,\"maximumGenerations\":16,\"generations\":[{\"id\":\"9130d72e-d099-4d07-9225-f38786727bec\",\"sequence\":1,\"state\":\"ACTIVE\",\"createdAt\":\"2026-11-16T11:51:08.959907218Z\",\"retiringAt\":null,\"acceptUntil\":null,\"revokedAt\":null,\"keys\":[{\"id\":\"9130d72e-d099-4d07-9225-f38786727bec:ED25519\",\"algorithm\":\"ED25519\",\"spkiSha256\":\"9731a4e3f1322afe9039587145fc2d88e71ba1364717a9f37670356a5d261800\",\"spkiBytes\":44},{\"id\":\"9130d72e-d099-4d07-9225-f38786727bec:ML_DSA_65\",\"algorithm\":\"ML_DSA_65\",\"spkiSha256\":\"95209e6d129dc93413677b9a95fc8843cc7e9114a5772776fb34639a26234c4a\",\"spkiBytes\":1974}]}]}",
+    "passed" : true,
+    "exchanges" : [ 16 ]
+  }, {
+    "id" : "phase-2-classical-evaluation.http",
+    "description" : "Observed HTTP status for phase-2-classical-evaluation",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 17 ]
+  }, {
+    "id" : "phase-2-classical.evaluation-policy",
+    "description" : "Read-only Java observations identify the actual live requirement.",
+    "expected" : "SHADOW_PQC",
+    "observed" : "SHADOW_PQC",
+    "passed" : true,
+    "exchanges" : [ 17 ]
+  }, {
+    "id" : "phase-2-classical.verified-signatures",
+    "description" : "Java independently verifies this sender's actual signatures.",
+    "expected" : "[true, false]",
+    "observed" : "[true, false]",
+    "passed" : true,
+    "exchanges" : [ 17 ]
+  }, {
+    "id" : "phase-2-classical-delivery.http",
+    "description" : "Observed HTTP status for phase-2-classical-delivery",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 18 ]
+  }, {
+    "id" : "phase-2-classical.delivery-status",
+    "description" : "Delivery creates or reuses the one durable business result.",
+    "expected" : "ALREADY_ACCEPTED",
+    "observed" : "ALREADY_ACCEPTED",
+    "passed" : true,
+    "exchanges" : [ 18 ]
+  }, {
+    "id" : "phase-2-classical-delivery.status",
+    "description" : "The response identifies the observed delivery or historical query.",
+    "expected" : "ALREADY_ACCEPTED",
+    "observed" : "ALREADY_ACCEPTED",
+    "passed" : true,
+    "exchanges" : [ 18 ]
+  }, {
+    "id" : "phase-2-classical-delivery.enforced-policy",
+    "description" : "The current requirement is reported separately from original acceptance.",
+    "expected" : "SHADOW_PQC",
+    "observed" : "SHADOW_PQC",
+    "passed" : true,
+    "exchanges" : [ 18 ]
+  }, {
+    "id" : "phase-2-classical-delivery.original-preserved",
+    "description" : "Every original receipt identity, claim, time, policy and signature result remains unchanged.",
+    "expected" : "{\"receiptId\":\"dd6d8ceb-b6e5-411a-a56e-632fce125d59\",\"eventId\":\"c6e31721-9184-4cb7-8a58-4e26f51a3535\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.0\",\"acceptedAt\":\"2026-11-16T11:51:24.219107933Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":false}}",
+    "observed" : "{\"receiptId\":\"dd6d8ceb-b6e5-411a-a56e-632fce125d59\",\"eventId\":\"c6e31721-9184-4cb7-8a58-4e26f51a3535\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.0\",\"acceptedAt\":\"2026-11-16T11:51:24.219107933Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":false}}",
+    "passed" : true,
+    "exchanges" : [ 7, 18 ]
+  }, {
+    "id" : "phase-2-classical-history.http",
+    "description" : "Observed HTTP status for phase-2-classical-history",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 19 ]
+  }, {
+    "id" : "phase-2-classical-history.status",
+    "description" : "The response identifies the observed delivery or historical query.",
+    "expected" : "STORED",
+    "observed" : "STORED",
+    "passed" : true,
+    "exchanges" : [ 19 ]
+  }, {
+    "id" : "phase-2-classical-history.enforced-policy",
+    "description" : "The current requirement is reported separately from original acceptance.",
+    "expected" : "SHADOW_PQC",
+    "observed" : "SHADOW_PQC",
+    "passed" : true,
+    "exchanges" : [ 19 ]
+  }, {
+    "id" : "phase-2-classical-history.original-preserved",
+    "description" : "Every original receipt identity, claim, time, policy and signature result remains unchanged.",
+    "expected" : "{\"receiptId\":\"dd6d8ceb-b6e5-411a-a56e-632fce125d59\",\"eventId\":\"c6e31721-9184-4cb7-8a58-4e26f51a3535\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.0\",\"acceptedAt\":\"2026-11-16T11:51:24.219107933Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":false}}",
+    "observed" : "{\"receiptId\":\"dd6d8ceb-b6e5-411a-a56e-632fce125d59\",\"eventId\":\"c6e31721-9184-4cb7-8a58-4e26f51a3535\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.0\",\"acceptedAt\":\"2026-11-16T11:51:24.219107933Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":false}}",
+    "passed" : true,
+    "exchanges" : [ 7, 19 ]
+  }, {
+    "id" : "phase-2-dual-evaluation.http",
+    "description" : "Observed HTTP status for phase-2-dual-evaluation",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 20 ]
+  }, {
+    "id" : "phase-2-dual.evaluation-policy",
+    "description" : "Read-only Java observations identify the actual live requirement.",
+    "expected" : "SHADOW_PQC",
+    "observed" : "SHADOW_PQC",
+    "passed" : true,
+    "exchanges" : [ 20 ]
+  }, {
+    "id" : "phase-2-dual.verified-signatures",
+    "description" : "Java independently verifies this sender's actual signatures.",
+    "expected" : "[true, true]",
+    "observed" : "[true, true]",
+    "passed" : true,
+    "exchanges" : [ 20 ]
+  }, {
+    "id" : "phase-2-dual-delivery.http",
+    "description" : "Observed HTTP status for phase-2-dual-delivery",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 21 ]
+  }, {
+    "id" : "phase-2-dual.delivery-status",
+    "description" : "Delivery creates or reuses the one durable business result.",
+    "expected" : "ALREADY_ACCEPTED",
+    "observed" : "ALREADY_ACCEPTED",
+    "passed" : true,
+    "exchanges" : [ 21 ]
+  }, {
+    "id" : "phase-2-dual-delivery.status",
+    "description" : "The response identifies the observed delivery or historical query.",
+    "expected" : "ALREADY_ACCEPTED",
+    "observed" : "ALREADY_ACCEPTED",
+    "passed" : true,
+    "exchanges" : [ 21 ]
+  }, {
+    "id" : "phase-2-dual-delivery.enforced-policy",
+    "description" : "The current requirement is reported separately from original acceptance.",
+    "expected" : "SHADOW_PQC",
+    "observed" : "SHADOW_PQC",
+    "passed" : true,
+    "exchanges" : [ 21 ]
+  }, {
+    "id" : "phase-2-dual-delivery.original-preserved",
+    "description" : "Every original receipt identity, claim, time, policy and signature result remains unchanged.",
+    "expected" : "{\"receiptId\":\"def52704-fe4f-456c-aaa6-7598e4e86f02\",\"eventId\":\"15217ab3-8bc6-42af-b33f-13da174f1718\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.1\",\"acceptedAt\":\"2026-11-16T11:51:24.366564240Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":true}}",
+    "observed" : "{\"receiptId\":\"def52704-fe4f-456c-aaa6-7598e4e86f02\",\"eventId\":\"15217ab3-8bc6-42af-b33f-13da174f1718\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.1\",\"acceptedAt\":\"2026-11-16T11:51:24.366564240Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":true}}",
+    "passed" : true,
+    "exchanges" : [ 10, 21 ]
+  }, {
+    "id" : "phase-2-dual-history.http",
+    "description" : "Observed HTTP status for phase-2-dual-history",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 22 ]
+  }, {
+    "id" : "phase-2-dual-history.status",
+    "description" : "The response identifies the observed delivery or historical query.",
+    "expected" : "STORED",
+    "observed" : "STORED",
+    "passed" : true,
+    "exchanges" : [ 22 ]
+  }, {
+    "id" : "phase-2-dual-history.enforced-policy",
+    "description" : "The current requirement is reported separately from original acceptance.",
+    "expected" : "SHADOW_PQC",
+    "observed" : "SHADOW_PQC",
+    "passed" : true,
+    "exchanges" : [ 22 ]
+  }, {
+    "id" : "phase-2-dual-history.original-preserved",
+    "description" : "Every original receipt identity, claim, time, policy and signature result remains unchanged.",
+    "expected" : "{\"receiptId\":\"def52704-fe4f-456c-aaa6-7598e4e86f02\",\"eventId\":\"15217ab3-8bc6-42af-b33f-13da174f1718\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.1\",\"acceptedAt\":\"2026-11-16T11:51:24.366564240Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":true}}",
+    "observed" : "{\"receiptId\":\"def52704-fe4f-456c-aaa6-7598e4e86f02\",\"eventId\":\"15217ab3-8bc6-42af-b33f-13da174f1718\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.1\",\"acceptedAt\":\"2026-11-16T11:51:24.366564240Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":true}}",
+    "passed" : true,
+    "exchanges" : [ 10, 22 ]
+  }, {
+    "id" : "phase-2-pqc-evaluation.http",
+    "description" : "Observed HTTP status for phase-2-pqc-evaluation",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 23 ]
+  }, {
+    "id" : "phase-2-pqc.evaluation-policy",
+    "description" : "Read-only Java observations identify the actual live requirement.",
+    "expected" : "SHADOW_PQC",
+    "observed" : "SHADOW_PQC",
+    "passed" : true,
+    "exchanges" : [ 23 ]
+  }, {
+    "id" : "phase-2-pqc.verified-signatures",
+    "description" : "Java independently verifies this sender's actual signatures.",
+    "expected" : "[false, true]",
+    "observed" : "[false, true]",
+    "passed" : true,
+    "exchanges" : [ 23 ]
+  }, {
+    "id" : "phase-2-pqc-delivery.http",
+    "description" : "Observed HTTP status for phase-2-pqc-delivery",
+    "expected" : "403",
+    "observed" : "403",
+    "passed" : true,
+    "exchanges" : [ 24 ]
+  }, {
+    "id" : "phase-2-pqc.policy-rejected",
+    "description" : "Insufficient signatures fail the live requirement even after prior acceptance.",
+    "expected" : "POLICY_REJECTED",
+    "observed" : "POLICY_REJECTED",
+    "passed" : true,
+    "exchanges" : [ 24 ]
+  }, {
+    "id" : "phase-2-pqc-history.http",
+    "description" : "Observed HTTP status for phase-2-pqc-history",
+    "expected" : "404",
+    "observed" : "404",
+    "passed" : true,
+    "exchanges" : [ 25 ]
+  }, {
+    "id" : "phase-2-pqc.no-write",
+    "description" : "Rejected/evaluated events have no durable result.",
+    "expected" : "RELEASE_NOT_FOUND",
+    "observed" : "RELEASE_NOT_FOUND",
+    "passed" : true,
+    "exchanges" : [ 25 ]
+  }, {
+    "id" : "phase-3.receiver-replaced",
+    "description" : "Only the receiver receives new startup settings.",
+    "expected" : "false",
+    "observed" : "false",
+    "passed" : true,
+    "exchanges" : [ ]
+  }, {
+    "id" : "phase-3.publisher-survived",
+    "description" : "The original publisher remains running.",
+    "expected" : "true",
+    "observed" : "true",
+    "passed" : true,
+    "exchanges" : [ ]
+  }, {
+    "id" : "phase-3.endpoints-preserved",
+    "description" : "Both owned HTTP endpoints remain unchanged.",
+    "expected" : "true",
+    "observed" : "true",
+    "passed" : true,
+    "exchanges" : [ ]
+  }, {
+    "id" : "phase-3-configuration.http",
+    "description" : "Observed HTTP status for phase-3-configuration",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 26 ]
+  }, {
+    "id" : "phase-3.live-policy",
+    "description" : "The real receiver enforces this phase's startup policy.",
+    "expected" : "BOTH_REQUIRED",
+    "observed" : "BOTH_REQUIRED",
+    "passed" : true,
+    "exchanges" : [ 26 ]
+  }, {
+    "id" : "phase-3.claims-and-time",
+    "description" : "The same signed identity, audience and freshness remain enforced.",
+    "expected" : "[release-publisher, urn:pqclab:release-receiver, PT5M, PT30S]",
+    "observed" : "[release-publisher, urn:pqclab:release-receiver, PT5M, PT30S]",
+    "passed" : true,
+    "exchanges" : [ 26 ]
+  }, {
+    "id" : "phase-3-registry.http",
+    "description" : "Observed HTTP status for phase-3-registry",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 27 ]
+  }, {
+    "id" : "phase-3.trust-preserved",
+    "description" : "Policy deployment does not rotate or replace any public trust.",
+    "expected" : "{\"managed\":true,\"revision\":1,\"issuer\":\"release-publisher\",\"activeGenerationId\":\"9130d72e-d099-4d07-9225-f38786727bec\",\"gracePeriodSeconds\":600,\"maximumGenerations\":16,\"generations\":[{\"id\":\"9130d72e-d099-4d07-9225-f38786727bec\",\"sequence\":1,\"state\":\"ACTIVE\",\"createdAt\":\"2026-11-16T11:51:08.959907218Z\",\"retiringAt\":null,\"acceptUntil\":null,\"revokedAt\":null,\"keys\":[{\"id\":\"9130d72e-d099-4d07-9225-f38786727bec:ED25519\",\"algorithm\":\"ED25519\",\"spkiSha256\":\"9731a4e3f1322afe9039587145fc2d88e71ba1364717a9f37670356a5d261800\",\"spkiBytes\":44},{\"id\":\"9130d72e-d099-4d07-9225-f38786727bec:ML_DSA_65\",\"algorithm\":\"ML_DSA_65\",\"spkiSha256\":\"95209e6d129dc93413677b9a95fc8843cc7e9114a5772776fb34639a26234c4a\",\"spkiBytes\":1974}]}]}",
+    "observed" : "{\"managed\":true,\"revision\":1,\"issuer\":\"release-publisher\",\"activeGenerationId\":\"9130d72e-d099-4d07-9225-f38786727bec\",\"gracePeriodSeconds\":600,\"maximumGenerations\":16,\"generations\":[{\"id\":\"9130d72e-d099-4d07-9225-f38786727bec\",\"sequence\":1,\"state\":\"ACTIVE\",\"createdAt\":\"2026-11-16T11:51:08.959907218Z\",\"retiringAt\":null,\"acceptUntil\":null,\"revokedAt\":null,\"keys\":[{\"id\":\"9130d72e-d099-4d07-9225-f38786727bec:ED25519\",\"algorithm\":\"ED25519\",\"spkiSha256\":\"9731a4e3f1322afe9039587145fc2d88e71ba1364717a9f37670356a5d261800\",\"spkiBytes\":44},{\"id\":\"9130d72e-d099-4d07-9225-f38786727bec:ML_DSA_65\",\"algorithm\":\"ML_DSA_65\",\"spkiSha256\":\"95209e6d129dc93413677b9a95fc8843cc7e9114a5772776fb34639a26234c4a\",\"spkiBytes\":1974}]}]}",
+    "passed" : true,
+    "exchanges" : [ 27 ]
+  }, {
+    "id" : "phase-3-classical-evaluation.http",
+    "description" : "Observed HTTP status for phase-3-classical-evaluation",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 28 ]
+  }, {
+    "id" : "phase-3-classical.evaluation-policy",
+    "description" : "Read-only Java observations identify the actual live requirement.",
+    "expected" : "BOTH_REQUIRED",
+    "observed" : "BOTH_REQUIRED",
+    "passed" : true,
+    "exchanges" : [ 28 ]
+  }, {
+    "id" : "phase-3-classical.verified-signatures",
+    "description" : "Java independently verifies this sender's actual signatures.",
+    "expected" : "[true, false]",
+    "observed" : "[true, false]",
+    "passed" : true,
+    "exchanges" : [ 28 ]
+  }, {
+    "id" : "phase-3-classical-delivery.http",
+    "description" : "Observed HTTP status for phase-3-classical-delivery",
+    "expected" : "403",
+    "observed" : "403",
+    "passed" : true,
+    "exchanges" : [ 29 ]
+  }, {
+    "id" : "phase-3-classical.policy-rejected",
+    "description" : "Insufficient signatures fail the live requirement even after prior acceptance.",
+    "expected" : "POLICY_REJECTED",
+    "observed" : "POLICY_REJECTED",
+    "passed" : true,
+    "exchanges" : [ 29 ]
+  }, {
+    "id" : "phase-3-classical-history.http",
+    "description" : "Observed HTTP status for phase-3-classical-history",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 30 ]
+  }, {
+    "id" : "phase-3-classical-history.status",
+    "description" : "The response identifies the observed delivery or historical query.",
+    "expected" : "STORED",
+    "observed" : "STORED",
+    "passed" : true,
+    "exchanges" : [ 30 ]
+  }, {
+    "id" : "phase-3-classical-history.enforced-policy",
+    "description" : "The current requirement is reported separately from original acceptance.",
+    "expected" : "BOTH_REQUIRED",
+    "observed" : "BOTH_REQUIRED",
+    "passed" : true,
+    "exchanges" : [ 30 ]
+  }, {
+    "id" : "phase-3-classical-history.original-preserved",
+    "description" : "Every original receipt identity, claim, time, policy and signature result remains unchanged.",
+    "expected" : "{\"receiptId\":\"dd6d8ceb-b6e5-411a-a56e-632fce125d59\",\"eventId\":\"c6e31721-9184-4cb7-8a58-4e26f51a3535\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.0\",\"acceptedAt\":\"2026-11-16T11:51:24.219107933Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":false}}",
+    "observed" : "{\"receiptId\":\"dd6d8ceb-b6e5-411a-a56e-632fce125d59\",\"eventId\":\"c6e31721-9184-4cb7-8a58-4e26f51a3535\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.0\",\"acceptedAt\":\"2026-11-16T11:51:24.219107933Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":false}}",
+    "passed" : true,
+    "exchanges" : [ 7, 30 ]
+  }, {
+    "id" : "phase-3-dual-evaluation.http",
+    "description" : "Observed HTTP status for phase-3-dual-evaluation",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 31 ]
+  }, {
+    "id" : "phase-3-dual.evaluation-policy",
+    "description" : "Read-only Java observations identify the actual live requirement.",
+    "expected" : "BOTH_REQUIRED",
+    "observed" : "BOTH_REQUIRED",
+    "passed" : true,
+    "exchanges" : [ 31 ]
+  }, {
+    "id" : "phase-3-dual.verified-signatures",
+    "description" : "Java independently verifies this sender's actual signatures.",
+    "expected" : "[true, true]",
+    "observed" : "[true, true]",
+    "passed" : true,
+    "exchanges" : [ 31 ]
+  }, {
+    "id" : "phase-3-dual-delivery.http",
+    "description" : "Observed HTTP status for phase-3-dual-delivery",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 32 ]
+  }, {
+    "id" : "phase-3-dual.delivery-status",
+    "description" : "Delivery creates or reuses the one durable business result.",
+    "expected" : "ALREADY_ACCEPTED",
+    "observed" : "ALREADY_ACCEPTED",
+    "passed" : true,
+    "exchanges" : [ 32 ]
+  }, {
+    "id" : "phase-3-dual-delivery.status",
+    "description" : "The response identifies the observed delivery or historical query.",
+    "expected" : "ALREADY_ACCEPTED",
+    "observed" : "ALREADY_ACCEPTED",
+    "passed" : true,
+    "exchanges" : [ 32 ]
+  }, {
+    "id" : "phase-3-dual-delivery.enforced-policy",
+    "description" : "The current requirement is reported separately from original acceptance.",
+    "expected" : "BOTH_REQUIRED",
+    "observed" : "BOTH_REQUIRED",
+    "passed" : true,
+    "exchanges" : [ 32 ]
+  }, {
+    "id" : "phase-3-dual-delivery.original-preserved",
+    "description" : "Every original receipt identity, claim, time, policy and signature result remains unchanged.",
+    "expected" : "{\"receiptId\":\"def52704-fe4f-456c-aaa6-7598e4e86f02\",\"eventId\":\"15217ab3-8bc6-42af-b33f-13da174f1718\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.1\",\"acceptedAt\":\"2026-11-16T11:51:24.366564240Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":true}}",
+    "observed" : "{\"receiptId\":\"def52704-fe4f-456c-aaa6-7598e4e86f02\",\"eventId\":\"15217ab3-8bc6-42af-b33f-13da174f1718\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.1\",\"acceptedAt\":\"2026-11-16T11:51:24.366564240Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":true}}",
+    "passed" : true,
+    "exchanges" : [ 10, 32 ]
+  }, {
+    "id" : "phase-3-dual-history.http",
+    "description" : "Observed HTTP status for phase-3-dual-history",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 33 ]
+  }, {
+    "id" : "phase-3-dual-history.status",
+    "description" : "The response identifies the observed delivery or historical query.",
+    "expected" : "STORED",
+    "observed" : "STORED",
+    "passed" : true,
+    "exchanges" : [ 33 ]
+  }, {
+    "id" : "phase-3-dual-history.enforced-policy",
+    "description" : "The current requirement is reported separately from original acceptance.",
+    "expected" : "BOTH_REQUIRED",
+    "observed" : "BOTH_REQUIRED",
+    "passed" : true,
+    "exchanges" : [ 33 ]
+  }, {
+    "id" : "phase-3-dual-history.original-preserved",
+    "description" : "Every original receipt identity, claim, time, policy and signature result remains unchanged.",
+    "expected" : "{\"receiptId\":\"def52704-fe4f-456c-aaa6-7598e4e86f02\",\"eventId\":\"15217ab3-8bc6-42af-b33f-13da174f1718\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.1\",\"acceptedAt\":\"2026-11-16T11:51:24.366564240Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":true}}",
+    "observed" : "{\"receiptId\":\"def52704-fe4f-456c-aaa6-7598e4e86f02\",\"eventId\":\"15217ab3-8bc6-42af-b33f-13da174f1718\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.1\",\"acceptedAt\":\"2026-11-16T11:51:24.366564240Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":true}}",
+    "passed" : true,
+    "exchanges" : [ 10, 33 ]
+  }, {
+    "id" : "phase-3-pqc-evaluation.http",
+    "description" : "Observed HTTP status for phase-3-pqc-evaluation",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 34 ]
+  }, {
+    "id" : "phase-3-pqc.evaluation-policy",
+    "description" : "Read-only Java observations identify the actual live requirement.",
+    "expected" : "BOTH_REQUIRED",
+    "observed" : "BOTH_REQUIRED",
+    "passed" : true,
+    "exchanges" : [ 34 ]
+  }, {
+    "id" : "phase-3-pqc.verified-signatures",
+    "description" : "Java independently verifies this sender's actual signatures.",
+    "expected" : "[false, true]",
+    "observed" : "[false, true]",
+    "passed" : true,
+    "exchanges" : [ 34 ]
+  }, {
+    "id" : "phase-3-pqc-delivery.http",
+    "description" : "Observed HTTP status for phase-3-pqc-delivery",
+    "expected" : "403",
+    "observed" : "403",
+    "passed" : true,
+    "exchanges" : [ 35 ]
+  }, {
+    "id" : "phase-3-pqc.policy-rejected",
+    "description" : "Insufficient signatures fail the live requirement even after prior acceptance.",
+    "expected" : "POLICY_REJECTED",
+    "observed" : "POLICY_REJECTED",
+    "passed" : true,
+    "exchanges" : [ 35 ]
+  }, {
+    "id" : "phase-3-pqc-history.http",
+    "description" : "Observed HTTP status for phase-3-pqc-history",
+    "expected" : "404",
+    "observed" : "404",
+    "passed" : true,
+    "exchanges" : [ 36 ]
+  }, {
+    "id" : "phase-3-pqc.no-write",
+    "description" : "Rejected/evaluated events have no durable result.",
+    "expected" : "RELEASE_NOT_FOUND",
+    "observed" : "RELEASE_NOT_FOUND",
+    "passed" : true,
+    "exchanges" : [ 36 ]
+  }, {
+    "id" : "phase-3-unsigned-downgrade.http",
+    "description" : "Observed HTTP status for phase-3-unsigned-downgrade",
+    "expected" : "403",
+    "observed" : "403",
+    "passed" : true,
+    "exchanges" : [ 37 ]
+  }, {
+    "id" : "phase-3.unsigned-policy-rejected",
+    "description" : "Unsigned sender metadata cannot select the receiver's requirement.",
+    "expected" : "POLICY_REJECTED",
+    "observed" : "POLICY_REJECTED",
+    "passed" : true,
+    "exchanges" : [ 37 ]
+  }, {
+    "id" : "phase-4.receiver-replaced",
+    "description" : "Only the receiver receives new startup settings.",
+    "expected" : "false",
+    "observed" : "false",
+    "passed" : true,
+    "exchanges" : [ ]
+  }, {
+    "id" : "phase-4.publisher-survived",
+    "description" : "The original publisher remains running.",
+    "expected" : "true",
+    "observed" : "true",
+    "passed" : true,
+    "exchanges" : [ ]
+  }, {
+    "id" : "phase-4.endpoints-preserved",
+    "description" : "Both owned HTTP endpoints remain unchanged.",
+    "expected" : "true",
+    "observed" : "true",
+    "passed" : true,
+    "exchanges" : [ ]
+  }, {
+    "id" : "phase-4-configuration.http",
+    "description" : "Observed HTTP status for phase-4-configuration",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 38 ]
+  }, {
+    "id" : "phase-4.live-policy",
+    "description" : "The real receiver enforces this phase's startup policy.",
+    "expected" : "PQC_REQUIRED",
+    "observed" : "PQC_REQUIRED",
+    "passed" : true,
+    "exchanges" : [ 38 ]
+  }, {
+    "id" : "phase-4.claims-and-time",
+    "description" : "The same signed identity, audience and freshness remain enforced.",
+    "expected" : "[release-publisher, urn:pqclab:release-receiver, PT5M, PT30S]",
+    "observed" : "[release-publisher, urn:pqclab:release-receiver, PT5M, PT30S]",
+    "passed" : true,
+    "exchanges" : [ 38 ]
+  }, {
+    "id" : "phase-4-registry.http",
+    "description" : "Observed HTTP status for phase-4-registry",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 39 ]
+  }, {
+    "id" : "phase-4.trust-preserved",
+    "description" : "Policy deployment does not rotate or replace any public trust.",
+    "expected" : "{\"managed\":true,\"revision\":1,\"issuer\":\"release-publisher\",\"activeGenerationId\":\"9130d72e-d099-4d07-9225-f38786727bec\",\"gracePeriodSeconds\":600,\"maximumGenerations\":16,\"generations\":[{\"id\":\"9130d72e-d099-4d07-9225-f38786727bec\",\"sequence\":1,\"state\":\"ACTIVE\",\"createdAt\":\"2026-11-16T11:51:08.959907218Z\",\"retiringAt\":null,\"acceptUntil\":null,\"revokedAt\":null,\"keys\":[{\"id\":\"9130d72e-d099-4d07-9225-f38786727bec:ED25519\",\"algorithm\":\"ED25519\",\"spkiSha256\":\"9731a4e3f1322afe9039587145fc2d88e71ba1364717a9f37670356a5d261800\",\"spkiBytes\":44},{\"id\":\"9130d72e-d099-4d07-9225-f38786727bec:ML_DSA_65\",\"algorithm\":\"ML_DSA_65\",\"spkiSha256\":\"95209e6d129dc93413677b9a95fc8843cc7e9114a5772776fb34639a26234c4a\",\"spkiBytes\":1974}]}]}",
+    "observed" : "{\"managed\":true,\"revision\":1,\"issuer\":\"release-publisher\",\"activeGenerationId\":\"9130d72e-d099-4d07-9225-f38786727bec\",\"gracePeriodSeconds\":600,\"maximumGenerations\":16,\"generations\":[{\"id\":\"9130d72e-d099-4d07-9225-f38786727bec\",\"sequence\":1,\"state\":\"ACTIVE\",\"createdAt\":\"2026-11-16T11:51:08.959907218Z\",\"retiringAt\":null,\"acceptUntil\":null,\"revokedAt\":null,\"keys\":[{\"id\":\"9130d72e-d099-4d07-9225-f38786727bec:ED25519\",\"algorithm\":\"ED25519\",\"spkiSha256\":\"9731a4e3f1322afe9039587145fc2d88e71ba1364717a9f37670356a5d261800\",\"spkiBytes\":44},{\"id\":\"9130d72e-d099-4d07-9225-f38786727bec:ML_DSA_65\",\"algorithm\":\"ML_DSA_65\",\"spkiSha256\":\"95209e6d129dc93413677b9a95fc8843cc7e9114a5772776fb34639a26234c4a\",\"spkiBytes\":1974}]}]}",
+    "passed" : true,
+    "exchanges" : [ 39 ]
+  }, {
+    "id" : "phase-4-classical-evaluation.http",
+    "description" : "Observed HTTP status for phase-4-classical-evaluation",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 40 ]
+  }, {
+    "id" : "phase-4-classical.evaluation-policy",
+    "description" : "Read-only Java observations identify the actual live requirement.",
+    "expected" : "PQC_REQUIRED",
+    "observed" : "PQC_REQUIRED",
+    "passed" : true,
+    "exchanges" : [ 40 ]
+  }, {
+    "id" : "phase-4-classical.verified-signatures",
+    "description" : "Java independently verifies this sender's actual signatures.",
+    "expected" : "[true, false]",
+    "observed" : "[true, false]",
+    "passed" : true,
+    "exchanges" : [ 40 ]
+  }, {
+    "id" : "phase-4-classical-delivery.http",
+    "description" : "Observed HTTP status for phase-4-classical-delivery",
+    "expected" : "403",
+    "observed" : "403",
+    "passed" : true,
+    "exchanges" : [ 41 ]
+  }, {
+    "id" : "phase-4-classical.policy-rejected",
+    "description" : "Insufficient signatures fail the live requirement even after prior acceptance.",
+    "expected" : "POLICY_REJECTED",
+    "observed" : "POLICY_REJECTED",
+    "passed" : true,
+    "exchanges" : [ 41 ]
+  }, {
+    "id" : "phase-4-classical-history.http",
+    "description" : "Observed HTTP status for phase-4-classical-history",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 42 ]
+  }, {
+    "id" : "phase-4-classical-history.status",
+    "description" : "The response identifies the observed delivery or historical query.",
+    "expected" : "STORED",
+    "observed" : "STORED",
+    "passed" : true,
+    "exchanges" : [ 42 ]
+  }, {
+    "id" : "phase-4-classical-history.enforced-policy",
+    "description" : "The current requirement is reported separately from original acceptance.",
+    "expected" : "PQC_REQUIRED",
+    "observed" : "PQC_REQUIRED",
+    "passed" : true,
+    "exchanges" : [ 42 ]
+  }, {
+    "id" : "phase-4-classical-history.original-preserved",
+    "description" : "Every original receipt identity, claim, time, policy and signature result remains unchanged.",
+    "expected" : "{\"receiptId\":\"dd6d8ceb-b6e5-411a-a56e-632fce125d59\",\"eventId\":\"c6e31721-9184-4cb7-8a58-4e26f51a3535\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.0\",\"acceptedAt\":\"2026-11-16T11:51:24.219107933Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":false}}",
+    "observed" : "{\"receiptId\":\"dd6d8ceb-b6e5-411a-a56e-632fce125d59\",\"eventId\":\"c6e31721-9184-4cb7-8a58-4e26f51a3535\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.0\",\"acceptedAt\":\"2026-11-16T11:51:24.219107933Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":false}}",
+    "passed" : true,
+    "exchanges" : [ 7, 42 ]
+  }, {
+    "id" : "phase-4-dual-evaluation.http",
+    "description" : "Observed HTTP status for phase-4-dual-evaluation",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 43 ]
+  }, {
+    "id" : "phase-4-dual.evaluation-policy",
+    "description" : "Read-only Java observations identify the actual live requirement.",
+    "expected" : "PQC_REQUIRED",
+    "observed" : "PQC_REQUIRED",
+    "passed" : true,
+    "exchanges" : [ 43 ]
+  }, {
+    "id" : "phase-4-dual.verified-signatures",
+    "description" : "Java independently verifies this sender's actual signatures.",
+    "expected" : "[true, true]",
+    "observed" : "[true, true]",
+    "passed" : true,
+    "exchanges" : [ 43 ]
+  }, {
+    "id" : "phase-4-dual-delivery.http",
+    "description" : "Observed HTTP status for phase-4-dual-delivery",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 44 ]
+  }, {
+    "id" : "phase-4-dual.delivery-status",
+    "description" : "Delivery creates or reuses the one durable business result.",
+    "expected" : "ALREADY_ACCEPTED",
+    "observed" : "ALREADY_ACCEPTED",
+    "passed" : true,
+    "exchanges" : [ 44 ]
+  }, {
+    "id" : "phase-4-dual-delivery.status",
+    "description" : "The response identifies the observed delivery or historical query.",
+    "expected" : "ALREADY_ACCEPTED",
+    "observed" : "ALREADY_ACCEPTED",
+    "passed" : true,
+    "exchanges" : [ 44 ]
+  }, {
+    "id" : "phase-4-dual-delivery.enforced-policy",
+    "description" : "The current requirement is reported separately from original acceptance.",
+    "expected" : "PQC_REQUIRED",
+    "observed" : "PQC_REQUIRED",
+    "passed" : true,
+    "exchanges" : [ 44 ]
+  }, {
+    "id" : "phase-4-dual-delivery.original-preserved",
+    "description" : "Every original receipt identity, claim, time, policy and signature result remains unchanged.",
+    "expected" : "{\"receiptId\":\"def52704-fe4f-456c-aaa6-7598e4e86f02\",\"eventId\":\"15217ab3-8bc6-42af-b33f-13da174f1718\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.1\",\"acceptedAt\":\"2026-11-16T11:51:24.366564240Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":true}}",
+    "observed" : "{\"receiptId\":\"def52704-fe4f-456c-aaa6-7598e4e86f02\",\"eventId\":\"15217ab3-8bc6-42af-b33f-13da174f1718\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.1\",\"acceptedAt\":\"2026-11-16T11:51:24.366564240Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":true}}",
+    "passed" : true,
+    "exchanges" : [ 10, 44 ]
+  }, {
+    "id" : "phase-4-dual-history.http",
+    "description" : "Observed HTTP status for phase-4-dual-history",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 45 ]
+  }, {
+    "id" : "phase-4-dual-history.status",
+    "description" : "The response identifies the observed delivery or historical query.",
+    "expected" : "STORED",
+    "observed" : "STORED",
+    "passed" : true,
+    "exchanges" : [ 45 ]
+  }, {
+    "id" : "phase-4-dual-history.enforced-policy",
+    "description" : "The current requirement is reported separately from original acceptance.",
+    "expected" : "PQC_REQUIRED",
+    "observed" : "PQC_REQUIRED",
+    "passed" : true,
+    "exchanges" : [ 45 ]
+  }, {
+    "id" : "phase-4-dual-history.original-preserved",
+    "description" : "Every original receipt identity, claim, time, policy and signature result remains unchanged.",
+    "expected" : "{\"receiptId\":\"def52704-fe4f-456c-aaa6-7598e4e86f02\",\"eventId\":\"15217ab3-8bc6-42af-b33f-13da174f1718\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.1\",\"acceptedAt\":\"2026-11-16T11:51:24.366564240Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":true}}",
+    "observed" : "{\"receiptId\":\"def52704-fe4f-456c-aaa6-7598e4e86f02\",\"eventId\":\"15217ab3-8bc6-42af-b33f-13da174f1718\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.1\",\"acceptedAt\":\"2026-11-16T11:51:24.366564240Z\",\"acceptedPolicy\":\"CLASSICAL_ONLY\",\"acceptedEvidence\":{\"ed25519Valid\":true,\"mlDsa65Valid\":true}}",
+    "passed" : true,
+    "exchanges" : [ 10, 45 ]
+  }, {
+    "id" : "phase-4-pqc-evaluation.http",
+    "description" : "Observed HTTP status for phase-4-pqc-evaluation",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 46 ]
+  }, {
+    "id" : "phase-4-pqc.evaluation-policy",
+    "description" : "Read-only Java observations identify the actual live requirement.",
+    "expected" : "PQC_REQUIRED",
+    "observed" : "PQC_REQUIRED",
+    "passed" : true,
+    "exchanges" : [ 46 ]
+  }, {
+    "id" : "phase-4-pqc.verified-signatures",
+    "description" : "Java independently verifies this sender's actual signatures.",
+    "expected" : "[false, true]",
+    "observed" : "[false, true]",
+    "passed" : true,
+    "exchanges" : [ 46 ]
+  }, {
+    "id" : "phase-4-pqc-delivery.http",
+    "description" : "Observed HTTP status for phase-4-pqc-delivery",
+    "expected" : "201",
+    "observed" : "201",
+    "passed" : true,
+    "exchanges" : [ 47 ]
+  }, {
+    "id" : "phase-4-pqc.delivery-status",
+    "description" : "Delivery creates or reuses the one durable business result.",
+    "expected" : "ACCEPTED",
+    "observed" : "ACCEPTED",
+    "passed" : true,
+    "exchanges" : [ 47 ]
+  }, {
+    "id" : "phase-4-pqc.first-acceptance",
+    "description" : "A new result records its actual first policy and signature evidence.",
+    "expected" : "[d900ba34-0426-4159-bd76-d3835211c91b, PQC_REQUIRED, false, true]",
+    "observed" : "[d900ba34-0426-4159-bd76-d3835211c91b, PQC_REQUIRED, false, true]",
+    "passed" : true,
+    "exchanges" : [ 47 ]
+  }, {
+    "id" : "phase-4-pqc-delivery.status",
+    "description" : "The response identifies the observed delivery or historical query.",
+    "expected" : "ACCEPTED",
+    "observed" : "ACCEPTED",
+    "passed" : true,
+    "exchanges" : [ 47 ]
+  }, {
+    "id" : "phase-4-pqc-delivery.enforced-policy",
+    "description" : "The current requirement is reported separately from original acceptance.",
+    "expected" : "PQC_REQUIRED",
+    "observed" : "PQC_REQUIRED",
+    "passed" : true,
+    "exchanges" : [ 47 ]
+  }, {
+    "id" : "phase-4-pqc-delivery.original-preserved",
+    "description" : "Every original receipt identity, claim, time, policy and signature result remains unchanged.",
+    "expected" : "{\"receiptId\":\"4812a119-9443-4500-94b4-4b05c003c68e\",\"eventId\":\"d900ba34-0426-4159-bd76-d3835211c91b\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.2\",\"acceptedAt\":\"2026-11-16T11:52:03.919434577Z\",\"acceptedPolicy\":\"PQC_REQUIRED\",\"acceptedEvidence\":{\"ed25519Valid\":false,\"mlDsa65Valid\":true}}",
+    "observed" : "{\"receiptId\":\"4812a119-9443-4500-94b4-4b05c003c68e\",\"eventId\":\"d900ba34-0426-4159-bd76-d3835211c91b\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.2\",\"acceptedAt\":\"2026-11-16T11:52:03.919434577Z\",\"acceptedPolicy\":\"PQC_REQUIRED\",\"acceptedEvidence\":{\"ed25519Valid\":false,\"mlDsa65Valid\":true}}",
+    "passed" : true,
+    "exchanges" : [ 47, 47 ]
+  }, {
+    "id" : "phase-4-pqc-history.http",
+    "description" : "Observed HTTP status for phase-4-pqc-history",
+    "expected" : "200",
+    "observed" : "200",
+    "passed" : true,
+    "exchanges" : [ 48 ]
+  }, {
+    "id" : "phase-4-pqc-history.status",
+    "description" : "The response identifies the observed delivery or historical query.",
+    "expected" : "STORED",
+    "observed" : "STORED",
+    "passed" : true,
+    "exchanges" : [ 48 ]
+  }, {
+    "id" : "phase-4-pqc-history.enforced-policy",
+    "description" : "The current requirement is reported separately from original acceptance.",
+    "expected" : "PQC_REQUIRED",
+    "observed" : "PQC_REQUIRED",
+    "passed" : true,
+    "exchanges" : [ 48 ]
+  }, {
+    "id" : "phase-4-pqc-history.original-preserved",
+    "description" : "Every original receipt identity, claim, time, policy and signature result remains unchanged.",
+    "expected" : "{\"receiptId\":\"4812a119-9443-4500-94b4-4b05c003c68e\",\"eventId\":\"d900ba34-0426-4159-bd76-d3835211c91b\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.2\",\"acceptedAt\":\"2026-11-16T11:52:03.919434577Z\",\"acceptedPolicy\":\"PQC_REQUIRED\",\"acceptedEvidence\":{\"ed25519Valid\":false,\"mlDsa65Valid\":true}}",
+    "observed" : "{\"receiptId\":\"4812a119-9443-4500-94b4-4b05c003c68e\",\"eventId\":\"d900ba34-0426-4159-bd76-d3835211c91b\",\"issuer\":\"release-publisher\",\"artifact\":\"migration-rehearsal\",\"version\":\"1.0.2\",\"acceptedAt\":\"2026-11-16T11:52:03.919434577Z\",\"acceptedPolicy\":\"PQC_REQUIRED\",\"acceptedEvidence\":{\"ed25519Valid\":false,\"mlDsa65Valid\":true}}",
+    "passed" : true,
+    "exchanges" : [ 47, 48 ]
+  }, {
+    "id" : "phase-4-unsigned-downgrade.http",
+    "description" : "Observed HTTP status for phase-4-unsigned-downgrade",
+    "expected" : "403",
+    "observed" : "403",
+    "passed" : true,
+    "exchanges" : [ 49 ]
+  }, {
+    "id" : "phase-4.unsigned-policy-rejected",
+    "description" : "Unsigned sender metadata cannot select the receiver's requirement.",
+    "expected" : "POLICY_REJECTED",
+    "observed" : "POLICY_REJECTED",
+    "passed" : true,
+    "exchanges" : [ 49 ]
+  }, {
+    "id" : "rollout.complete",
+    "description" : "All three original events have exactly one distinct durable receipt.",
+    "expected" : "3",
+    "observed" : "3",
+    "passed" : true,
+    "exchanges" : [ ]
+  } ],
+  "policyPhases" : [ {
+    "phase" : 1,
+    "policy" : "CLASSICAL_ONLY",
+    "configurationExchange" : 1,
+    "deliveries" : [ {
+      "signingMode" : "ED25519_ONLY",
+      "exchange" : 7,
+      "expectedStatus" : 201,
+      "actualStatus" : 201,
+      "result" : "ACCEPTED",
+      "receiptId" : "dd6d8ceb-b6e5-411a-a56e-632fce125d59",
+      "acceptedPolicy" : "CLASSICAL_ONLY"
+    }, {
+      "signingMode" : "DUAL",
+      "exchange" : 10,
+      "expectedStatus" : 201,
+      "actualStatus" : 201,
+      "result" : "ACCEPTED",
+      "receiptId" : "def52704-fe4f-456c-aaa6-7598e4e86f02",
+      "acceptedPolicy" : "CLASSICAL_ONLY"
+    }, {
+      "signingMode" : "ML_DSA_65_ONLY",
+      "exchange" : 13,
+      "expectedStatus" : 403,
+      "actualStatus" : 403,
+      "result" : "POLICY_REJECTED",
+      "receiptId" : null,
+      "acceptedPolicy" : null
+    } ]
+  }, {
+    "phase" : 2,
+    "policy" : "SHADOW_PQC",
+    "configurationExchange" : 15,
+    "deliveries" : [ {
+      "signingMode" : "ED25519_ONLY",
+      "exchange" : 18,
+      "expectedStatus" : 200,
+      "actualStatus" : 200,
+      "result" : "ALREADY_ACCEPTED",
+      "receiptId" : "dd6d8ceb-b6e5-411a-a56e-632fce125d59",
+      "acceptedPolicy" : "CLASSICAL_ONLY"
+    }, {
+      "signingMode" : "DUAL",
+      "exchange" : 21,
+      "expectedStatus" : 200,
+      "actualStatus" : 200,
+      "result" : "ALREADY_ACCEPTED",
+      "receiptId" : "def52704-fe4f-456c-aaa6-7598e4e86f02",
+      "acceptedPolicy" : "CLASSICAL_ONLY"
+    }, {
+      "signingMode" : "ML_DSA_65_ONLY",
+      "exchange" : 24,
+      "expectedStatus" : 403,
+      "actualStatus" : 403,
+      "result" : "POLICY_REJECTED",
+      "receiptId" : null,
+      "acceptedPolicy" : null
+    } ]
+  }, {
+    "phase" : 3,
+    "policy" : "BOTH_REQUIRED",
+    "configurationExchange" : 26,
+    "deliveries" : [ {
+      "signingMode" : "ED25519_ONLY",
+      "exchange" : 29,
+      "expectedStatus" : 403,
+      "actualStatus" : 403,
+      "result" : "POLICY_REJECTED",
+      "receiptId" : null,
+      "acceptedPolicy" : null
+    }, {
+      "signingMode" : "DUAL",
+      "exchange" : 32,
+      "expectedStatus" : 200,
+      "actualStatus" : 200,
+      "result" : "ALREADY_ACCEPTED",
+      "receiptId" : "def52704-fe4f-456c-aaa6-7598e4e86f02",
+      "acceptedPolicy" : "CLASSICAL_ONLY"
+    }, {
+      "signingMode" : "ML_DSA_65_ONLY",
+      "exchange" : 35,
+      "expectedStatus" : 403,
+      "actualStatus" : 403,
+      "result" : "POLICY_REJECTED",
+      "receiptId" : null,
+      "acceptedPolicy" : null
+    } ]
+  }, {
+    "phase" : 4,
+    "policy" : "PQC_REQUIRED",
+    "configurationExchange" : 38,
+    "deliveries" : [ {
+      "signingMode" : "ED25519_ONLY",
+      "exchange" : 41,
+      "expectedStatus" : 403,
+      "actualStatus" : 403,
+      "result" : "POLICY_REJECTED",
+      "receiptId" : null,
+      "acceptedPolicy" : null
+    }, {
+      "signingMode" : "DUAL",
+      "exchange" : 44,
+      "expectedStatus" : 200,
+      "actualStatus" : 200,
+      "result" : "ALREADY_ACCEPTED",
+      "receiptId" : "def52704-fe4f-456c-aaa6-7598e4e86f02",
+      "acceptedPolicy" : "CLASSICAL_ONLY"
+    }, {
+      "signingMode" : "ML_DSA_65_ONLY",
+      "exchange" : 47,
+      "expectedStatus" : 201,
+      "actualStatus" : 201,
+      "result" : "ACCEPTED",
+      "receiptId" : "4812a119-9443-4500-94b4-4b05c003c68e",
+      "acceptedPolicy" : "PQC_REQUIRED"
+    } ]
+  } ],
+  "successful" : true,
+  "passed" : 165,
+  "failed" : 0
+}

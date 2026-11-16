@@ -1,0 +1,1 @@
+{"status":"STORED","receiptId":"def52704-fe4f-456c-aaa6-7598e4e86f02","eventId":"15217ab3-8bc6-42af-b33f-13da174f1718","issuer":"release-publisher","artifact":"migration-rehearsal","version":"1.0.1","acceptedAt":"2026-11-16T11:51:24.366564240Z","enforcedPolicy":"CLASSICAL_ONLY","acceptedPolicy":"CLASSICAL_ONLY","acceptedEvidence":{"ed25519Valid":true,"mlDsa65Valid":true}}

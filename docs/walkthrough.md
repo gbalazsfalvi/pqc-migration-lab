@@ -1,5 +1,9 @@
 # A migration story you can reproduce
 
+This walkthrough explains the retained fixed-policy lifecycle story. For the
+complete live four-policy deployment sequence, use the
+[06B rehearsal](milestone-06b.md) and its standalone HTML report.
+
 ## The engineering question
 
 A valid signature is only one part of accepting an integration event. The receiver must know whose key it trusts, what the event means, which algorithms it requires and whether an old delivery is still acceptable now.
@@ -8,7 +12,7 @@ PQC Migration Lab makes those decisions visible using synthetic software release
 
 ## Start with the automatic demonstration
 
-Run `.\lab.ps1 migration-demo` from the repository root. See [the complete prerequisites and Unix command](milestone-05a.md#run-one-command). Open the new `report.md` path printed at the end.
+Run `.\lab.ps1 migration-demo` for the separate-process 06A lifecycle story, or `.\lab.ps1 legacy-migration-demo` for the original 05A topology. See [the current commands](milestone-06a.md) and [the retained 05A contract](milestone-05a.md#run-one-command). Open the new `report.md` path printed at the end.
 
 Start by checking the result and completion state. A partial run remains useful evidence, but it is not a successful demonstration. Verify `SHA256SUMS` before reviewing a copied bundle.
 
@@ -63,6 +67,6 @@ Create fresh events for manual experiments: event freshness remains five minutes
 
 The project demonstrates application-level signature migration using library/platform cryptography. It includes reproducible interoperability probes, policy and claim validation, transactional idempotency, key lifecycle management, a React workbench and independent JMH measurements.
 
-The two HTTP servers run in one JVM. The local control API has no production operator authentication. This is neither a post-quantum TLS deployment nor a production KMS, and the evidence manifest is not independently signed.
+The retained 05A launcher runs both servers in one JVM. The 06A/06B launchers use separate processes or local containers. The local control API has no production operator authentication. This is neither a post-quantum TLS deployment nor a production KMS, and the evidence manifest is not independently signed.
 
-Use [the threat model](threat-model.md) and [architecture decision](decisions/0001-signed-migration-laboratory.md) when discussing those boundaries. Publication, a video and the portfolio case study remain separate work.
+Use [the threat model](threat-model.md), [06B contract](milestone-06b.md) and [architecture decision](decisions/0001-signed-migration-laboratory.md) when discussing those boundaries. The bilingual case study is updated locally; source publication, a new release, a video and hosted deployment remain separate actions.

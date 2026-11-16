@@ -15,9 +15,15 @@ public final class LocalIntegration {
      * @throws Exception if startup or local storage preparation fails
      */
     public static void main(String[] arguments) throws Exception {
+        if (java.util.Arrays.stream(arguments)
+                .anyMatch(argument -> argument.startsWith("--role=") || argument.startsWith("--healthcheck="))) {
+            hu.balazsfalvi.pqclab.integration.app.runtime.ServiceApplication.main(arguments);
+            return;
+        }
         if (arguments.length == 1 && "--help".equals(arguments[0])) {
             System.out.println("Usage: integration-app [--policy=BOTH_REQUIRED] [--publisher-port=8781]"
                     + " [--receiver-port=8782] [--data-dir=.local/integration]");
+            hu.balazsfalvi.pqclab.integration.app.runtime.ServiceApplication.main(new String[] {"--help"});
             return;
         }
         LocalOptions options = LocalOptions.parse(arguments);

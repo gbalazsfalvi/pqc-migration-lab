@@ -1,0 +1,93 @@
+# Local reference deployment only. All published ports bind to the host's IPv4 loopback interface.
+x-runtime: &runtime
+  image: pqc-migration-lab:06a-local
+  build:
+    context: .
+  user: "10001:10001"
+  read_only: true
+  tmpfs:
+    - /tmp:size=128m,mode=1777
+  cap_drop: [ALL]
+  security_opt: ["no-new-privileges:true"]
+  mem_limit: 512m
+  pids_limit: 128
+  networks: [laboratory]
+  stop_grace_period: 15s
+
+services:
+  initialize:
+    <<: *runtime
+    command:
+      - --role=init
+      - --network=compose
+      - --data-dir=/data/publisher
+      - --trust-dir=/data/trust
+      - --secret-file=/secrets/account.key
+    volumes:
+      - publisher-state:/data/publisher
+      - publisher-secrets:/secrets
+      - public-trust:/data/trust
+    restart: "no"
+
+  receiver:
+    <<: *runtime
+    user: "10002:10002"
+    command:
+      - --role=receiver
+      - --network=compose
+      - --data-dir=/data/receiver
+      - --trust-dir=/data/trust
+      - --policy=BOTH_REQUIRED
+    depends_on:
+      initialize:
+        condition: service_completed_successfully
+    ports:
+      - "127.0.0.1:${PQC_LAB_RECEIVER_PORT:-8782}:8782"
+    volumes:
+      - receiver-state:/data/receiver
+      # The receiver receives neither the publisher volume nor its wrapping secret.
+      - type: volume
+        source: public-trust
+        target: /data/trust
+        read_only: true
+    healthcheck:
+      test: ["CMD", "java", "-jar", "/opt/pqclab/app.jar", "--healthcheck=8782"]
+      interval: 5s
+      timeout: 10s
+      start_period: 10s
+      retries: 12
+
+  publisher:
+    <<: *runtime
+    command:
+      - --role=publisher
+      - --network=compose
+      - --data-dir=/data/publisher
+      - --trust-dir=/data/trust
+      - --secret-file=/secrets/account.key
+    depends_on:
+      initialize:
+        condition: service_completed_successfully
+    ports:
+      - "127.0.0.1:${PQC_LAB_PUBLISHER_PORT:-8781}:8781"
+    volumes:
+      - publisher-state:/data/publisher
+      - publisher-secrets:/secrets
+      - public-trust:/data/trust
+    healthcheck:
+      test: ["CMD", "java", "-jar", "/opt/pqclab/app.jar", "--healthcheck=8781"]
+      interval: 5s
+      timeout: 10s
+      start_period: 10s
+      retries: 12
+
+networks:
+  laboratory:
+    # A dedicated bridge supports host loopback publications. No API is published on a wildcard host address.
+    driver: bridge
+
+volumes:
+  publisher-state:
+  publisher-secrets:
+  receiver-state:
+  public-trust:

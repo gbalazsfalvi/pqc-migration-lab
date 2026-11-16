@@ -67,3 +67,37 @@ The owner selected Apache-2.0 and authorized the first tagged reference release,
 A demonstration video and hosted deployment are optional future work. Keep the dependency and fixture attribution current.
 
 The application still runs locally. Public source publication does not create a hosted workbench or publish the separate portfolio website.
+
+## 06A · Separate service processes and local Compose
+
+The local implementation adds independent publisher and receiver JVMs, a multi-stage
+Docker build and an isolated Compose network with separate persistent volumes.
+The receiver has no publisher vault/secret mount and reads public trust through a
+read-only volume and an operation-scoped OS file lease. Pending publication fences
+partial private/public commits until authenticated publisher startup recovery.
+
+The expanded migration story exercises actual receiver termination, gateway
+unavailability, independent role restarts, durable receipt reuse and the original
+rotation/revocation phases. Native and Compose runs produce the same reviewed
+public evidence format. The 05A one-JVM program remains available separately.
+
+See [the milestone contract and commands](milestone-06a.md). This work is local;
+publishing it, creating another release and hosted operation are separate actions.
+
+## 06B · End-to-end migration rehearsal — final local scope
+
+The receiver actually advances through CLASSICAL_ONLY, SHADOW_PQC, BOTH_REQUIRED
+and PQC_REQUIRED using three receiver-only deployments. One publisher, one ledger,
+unchanged public trust and three original envelopes cross all four phases.
+Compatibility, rejection after earlier acceptance, immutable original receipts
+and unsigned downgrade rejection are observed through real HTTP.
+
+Native and actual Compose commands produce standalone HTML, Markdown, schema-2
+JSON, exact public bodies and checksums. A reviewed example and the bilingual
+portfolio explain the results without requiring readers to run Java.
+See [the final milestone contract](milestone-06b.md).
+
+The reference is complete at this boundary. The 06A/06B implementation is included
+in the [v0.2.0 source release](releases/0.2.0.md). Hosted operation and portfolio
+deployment remain separate actions. Additional infrastructure is not required
+to demonstrate the project.

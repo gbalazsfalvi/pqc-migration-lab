@@ -22,6 +22,16 @@ final class VaultCodec {
 
     /** Serializes validated key material only for immediate encryption, never HTTP or a report. */
     byte[] encode(VaultState state) {
+        return encode(state, true);
+    }
+
+    /** Projects only public SPKI and lifecycle metadata for the separate receiver process. */
+    byte[] encodePublic(VaultState state) {
+        return encode(state, false);
+    }
+
+    /** Shares stable metadata encoding while keeping private serialization behind an explicit branch. */
+    private byte[] encode(VaultState state, boolean includePrivate) {
         var root = json.object();
         root.put("formatVersion", 1);
         root.put("issuer", state.issuer());
@@ -48,6 +58,7 @@ final class VaultCodec {
                                         .get(algorithm)
                                         .getPublic()
                                         .getEncoded()));
+                if (!includePrivate) continue;
                 var privateKey = generation.pairs().get(algorithm).getPrivate();
                 if (privateKey == null) {
                     key.putNull("pkcs8");

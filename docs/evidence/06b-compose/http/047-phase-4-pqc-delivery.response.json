@@ -1,0 +1,1 @@
+{"status":"ACCEPTED","receiptId":"4812a119-9443-4500-94b4-4b05c003c68e","eventId":"d900ba34-0426-4159-bd76-d3835211c91b","issuer":"release-publisher","artifact":"migration-rehearsal","version":"1.0.2","acceptedAt":"2026-11-16T11:52:03.919434577Z","enforcedPolicy":"PQC_REQUIRED","acceptedPolicy":"PQC_REQUIRED","acceptedEvidence":{"ed25519Valid":false,"mlDsa65Valid":true}}

@@ -12,7 +12,7 @@ plugins {
 
 allprojects {
     group = "hu.balazsfalvi.pqclab"
-    version = "0.1.0"
+    version = "0.2.0"
     repositories { mavenCentral() }
 }
 
@@ -128,7 +128,7 @@ tasks.register("demo") {
 
 tasks.register("migrationDemo") {
     group = "verification"
-    description = "Runs the isolated three-phase key migration story and writes public evidence."
+    description = "Runs the separate-process migration story with independent crash/restart recovery and public evidence."
     dependsOn(":integration-app:migrationDemo")
 }
 
@@ -136,6 +136,24 @@ tasks.register("benchmark") {
     group = "verification"
     description = "Runs the complete standard JMH measurement matrix with independent JVM forks."
     dependsOn(":benchmarks:standard")
+}
+
+tasks.register("composeMigrationDemo") {
+    group = "verification"
+    description = "Builds and verifies an owned local Compose deployment with public evidence and volume cleanup."
+    dependsOn(":integration-app:composeMigrationDemo")
+}
+
+tasks.register("rehearsalDemo") {
+    group = "verification"
+    description = "Runs the four-phase live-policy rehearsal with native service JVMs and shareable evidence."
+    dependsOn(":integration-app:rehearsalDemo")
+}
+
+tasks.register("composeRehearsalDemo") {
+    group = "verification"
+    description = "Runs the four-phase live-policy rehearsal in an owned local Compose deployment."
+    dependsOn(":integration-app:composeRehearsalDemo")
 }
 
 tasks.register("benchmarkQuick") {

@@ -1,0 +1,1 @@
+{"policy":"BOTH_REQUIRED","issuer":"release-publisher","audience":"urn:pqclab:release-receiver","maximumAge":"PT5M","futureTolerance":"PT30S"}

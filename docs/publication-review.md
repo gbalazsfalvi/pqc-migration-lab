@@ -150,6 +150,34 @@ Publishing source is separate from selecting a project licence, creating a tagge
 
 The owner subsequently selected Apache-2.0 and authorized the first GitHub release. Version [0.1.0](releases/0.1.0.md) records that decision with the unchanged official Apache licence text in LICENSE and project attribution in NOTICE. The workbench package metadata uses the SPDX identifier `Apache-2.0`; third-party notices and their original terms remain intact.
 
-Gradle and workbench metadata use the same version, `0.1.0`. Java archives include LICENSE, NOTICE, THIRD_PARTY_NOTICES.md and the retained fixture notice under META-INF. CI assembles the distributable archives in addition to the existing quality gates and demonstrations.
+For that first release, Gradle and workbench metadata used the same version, `0.1.0`. Java archives include LICENSE, NOTICE, THIRD_PARTY_NOTICES.md and the retained fixture notice under META-INF. CI assembles the distributable archives in addition to the existing quality gates and demonstrations.
 
 The release is a tagged source reference with documented reproduction steps. Its publication requires the exact release revision and tag to pass the Windows/Linux workflow. Hosted deployment and video work remain separate from this release.
+
+## Version 0.2.0: 06A and 06B
+
+The owner authorized updating main and creating the next GitHub release.
+Version [0.2.0](releases/0.2.0.md) adds independent service roles, local Compose,
+cross-process public trust, crash/restart evidence and the four-phase live-policy
+rehearsal. Version metadata and the Docker JAR path are updated consistently;
+the official licence, notices and prior tagged release remain intact.
+
+The reviewed source candidate includes the synthetic example bundle and its
+documented original screenshot. Runtime keys, wrapping secrets, local toolchains,
+build outputs and raw Docker diagnostics remain excluded. Release verification
+re-runs the quality gates, demonstrations, legal-file checks and secret scan;
+Windows/Linux checks must pass for the exact release commit and tag.
+
+The 16 November 2026 pre-release registry checks returned zero npm advisories
+and zero OSV matches for 286 distinct Maven coordinates collected from the
+current lockfiles and dependency-verification metadata, with no pagination.
+These are dated registry observations, not a certification or a guarantee that
+future advisories will remain empty. Dependency versions were not changed for
+this release.
+
+Staged-source review caught Git normalizing the example report's original CRLF
+bytes, which would have invalidated its manifest after cloning. A targeted
+gitattributes rule now preserves the evidence verbatim, while the Unix wrapper
+and Docker inputs use explicit LF checkout rules. A Java regression verifies the
+complete published example against its original manifest and rejects unlisted
+files. The fixture directory is an explicit Gradle test input.

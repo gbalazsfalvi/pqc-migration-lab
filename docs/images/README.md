@@ -1,6 +1,8 @@
 # Screenshot provenance
 
-Captured from the actual packaged local workbench on 13 November 2026, using synthetic software-release data. Images are browser screenshots with no composited UI, invented verdicts or private runtime files.
+The three historical workbench captures were taken on 13 November 2026. The new
+four-phase report capture was taken on 16 November 2026. All use actual local
+synthetic observations, with no composited UI, invented verdicts or private runtime files.
 
 | Image                                              | Observed state                                                                                                                                                          |
 | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13,6 +15,14 @@ The original dual-signed event was delivered successfully with HTTP 201 before t
 The lifecycle state comes from the existing local synthetic session. No extra rotation or revocation was performed to manufacture a screenshot. New installations and subsequent runs will have different identifiers, fingerprints, timestamps and session-history counts.
 
 ## Reproduce the views
+
+For [migration-rehearsal.jpg](migration-rehearsal.jpg), run the actual 06B Compose
+rehearsal and open its generated report.html through a local static server.
+The retained capture shows run 475f288d-cef6-4e07-8b06-265810be59d3: four completed
+phases, 165 passing assertions and 49 actual HTTP attempts. Its JPEG SHA-256 is
+3b65ca9fd132ab8ee0256883336693e1209bb2e31a3b3b98990d282bbab5dbc2.
+The portfolio uses the same original bytes. This report capture is distinct from
+the earlier workbench screenshots below.
 
 1. Run `.\lab.ps1 serve` and open `http://127.0.0.1:8781/`.
 2. Create a fresh dual-signed synthetic event and deliver it.

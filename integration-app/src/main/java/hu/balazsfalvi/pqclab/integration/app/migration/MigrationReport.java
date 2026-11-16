@@ -16,6 +16,7 @@ import java.util.List;
  * @param environment the public runtime description
  * @param exchanges the ordered actual HTTP attempts
  * @param checks the independently specified expectations
+ * @param policyPhases the completed 06B rollout phases, otherwise empty
  */
 public record MigrationReport(
         int schemaVersion,
@@ -28,12 +29,14 @@ public record MigrationReport(
         String failureCode,
         Environment environment,
         List<Exchange> exchanges,
-        List<Check> checks) {
+        List<Check> checks,
+        List<PolicyPhase> policyPhases) {
 
     /** Freezes ordered public observations before serialization. */
     public MigrationReport {
         exchanges = List.copyOf(exchanges);
         checks = List.copyOf(checks);
+        policyPhases = List.copyOf(policyPhases);
     }
 
     /**
@@ -45,6 +48,7 @@ public record MigrationReport(
         return outcome == Outcome.PASS
                 && scenarioCompleted
                 && failureCode == null
+                && (!"06B".equals(milestone) || policyPhases.size() == 4)
                 && !checks.isEmpty()
                 && checks.stream().allMatch(Check::passed);
     }
@@ -128,4 +132,39 @@ public record MigrationReport(
             exchanges = List.copyOf(exchanges);
         }
     }
+
+    /**
+     * Summarizes an actually completed receiver phase using only validated public observations.
+     *
+     * @param phase the one-based reviewed rollout step
+     * @param policy the policy observed from the live receiver
+     * @param configurationExchange the HTTP observation confirming that startup requirement
+     * @param deliveries the ordered classical, dual and PQC delivery results
+     */
+    public record PolicyPhase(int phase, String policy, int configurationExchange, List<PolicyDelivery> deliveries) {
+        /** Freezes the observation matrix independently of the running scenario. */
+        public PolicyPhase {
+            deliveries = List.copyOf(deliveries);
+        }
+    }
+
+    /**
+     * Links the compatibility matrix to an exact, already validated delivery response.
+     *
+     * @param signingMode the publisher's signature profile
+     * @param exchange the supporting HTTP attempt number
+     * @param expectedStatus the independently planned HTTP status
+     * @param actualStatus the actual HTTP status
+     * @param result the public receipt status or safe rejection code
+     * @param receiptId the observed stable receipt identity, otherwise null
+     * @param acceptedPolicy the original first-acceptance requirement, otherwise null
+     */
+    public record PolicyDelivery(
+            String signingMode,
+            int exchange,
+            int expectedStatus,
+            int actualStatus,
+            String result,
+            String receiptId,
+            String acceptedPolicy) {}
 }

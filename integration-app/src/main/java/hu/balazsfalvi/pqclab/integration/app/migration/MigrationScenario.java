@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import hu.balazsfalvi.pqclab.core.dsse.DsseEnvelope;
 import hu.balazsfalvi.pqclab.integration.app.migration.MigrationTransport.Reply;
 import hu.balazsfalvi.pqclab.integration.app.runtime.LocalRuntime;
+import hu.balazsfalvi.pqclab.integration.app.runtime.MigrationRuntime;
 import hu.balazsfalvi.pqclab.integration.app.wire.ReleaseJsonCodec;
 import hu.balazsfalvi.pqclab.json.DsseJsonCodec;
 import java.io.IOException;
@@ -26,11 +27,22 @@ final class MigrationScenario {
     private final MigrationJournal journal;
     private final ObjectMapper json = new ObjectMapper();
     private final DsseJsonCodec envelopes = new DsseJsonCodec();
-    private final Clock clock = Clock.systemUTC();
+    private final RuntimeFactory runtimes;
+    private final boolean recovery;
 
     /** Binds all assertions to one public evidence run. */
     MigrationScenario(MigrationJournal journal) {
+        this(
+                journal,
+                workspace -> LocalRuntime.start(workspace.options(), Clock.systemUTC(), workspace.secretFile()),
+                false);
+    }
+
+    /** Selects actual native JVM or Compose ownership while preserving the established HTTP assertions. */
+    MigrationScenario(MigrationJournal journal, RuntimeFactory runtimes, boolean recovery) {
         this.journal = journal;
+        this.runtimes = runtimes;
+        this.recovery = recovery;
     }
 
     /** Runs three independently reconstructed runtimes, retaining public bytes and receipts only between phases. */
@@ -42,7 +54,7 @@ final class MigrationScenario {
 
     /** Proves acceptance, idempotency, downgrade rejection and bounded rotation overlap. */
     private Original acceptAndRotate(MigrationWorkspace workspace) throws IOException, InterruptedException {
-        try (var runtime = LocalRuntime.start(workspace.options(), clock, workspace.secretFile());
+        try (var runtime = runtimes.start(workspace);
                 var http = new MigrationTransport(runtime.publisherUri(), runtime.receiverUri(), journal, 1)) {
             configuration(http, "initial");
             Reply initial = http.exchange("initial-registry", KEYS, 200, EMPTY);
@@ -100,6 +112,7 @@ final class MigrationScenario {
                     accepted.sequence());
             Reply replay = http.exchange("original-replay", DELIVER, 200, original);
             receipt("replay", accepted, replay, "ALREADY_ACCEPTED");
+            if (recovery) ProcessRecoveryCheck.verify(runtime, http, journal, original, accepted);
 
             // DUAL has a documented publisher order. Actual Java observations below must confirm what remains.
             DsseEnvelope envelope = envelopes.read(original);
@@ -189,7 +202,7 @@ final class MigrationScenario {
     /** Reconstructs from disk, revokes old trust and creates a fresh event with the current generation. */
     private Current revokeAndReplace(MigrationWorkspace workspace, Original original)
             throws IOException, InterruptedException {
-        try (var runtime = LocalRuntime.start(workspace.options(), clock, workspace.secretFile());
+        try (var runtime = runtimes.start(workspace);
                 var http = new MigrationTransport(runtime.publisherUri(), runtime.receiverUri(), journal, 2)) {
             configuration(http, "rotation-restart");
             Reply restarted = http.exchange("rotation-restart-registry", KEYS, 200, EMPTY);
@@ -262,7 +275,7 @@ final class MigrationScenario {
     /** Verifies revocation, historical receipts and the current generation after another disk-only reconstruction. */
     private void verifyDurableRevocation(MigrationWorkspace workspace, Original original, Current current)
             throws IOException, InterruptedException {
-        try (var runtime = LocalRuntime.start(workspace.options(), clock, workspace.secretFile());
+        try (var runtime = runtimes.start(workspace);
                 var http = new MigrationTransport(runtime.publisherUri(), runtime.receiverUri(), journal, 3)) {
             configuration(http, "revocation-restart");
             Reply restarted = http.exchange("revocation-restart-registry", KEYS, 200, EMPTY);
@@ -441,4 +454,11 @@ final class MigrationScenario {
 
     /** Retains public replacement-event evidence for the final disk-only phase. */
     private record Current(byte[] envelope, Reply receipt, Reply registry) {}
+
+    /** Creates only newly owned runtimes from the scenario's private workspace. */
+    @FunctionalInterface
+    interface RuntimeFactory {
+        /** Starts a complete runtime without importing any private capabilities into the scenario. */
+        MigrationRuntime start(MigrationWorkspace workspace) throws IOException, InterruptedException;
+    }
 }

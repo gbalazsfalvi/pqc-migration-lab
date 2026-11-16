@@ -220,7 +220,7 @@ export function App() {
                                 </div>
                                 <span className="flow-local">
                                     <span />
-                                    LOOPBACK HTTP
+                                    HTTP DELIVERY
                                 </span>
                             </div>
                             {state.connection === 'offline' ? (

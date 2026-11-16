@@ -73,11 +73,12 @@ public class ReceiverConfiguration {
     /**
      * Rejects browser-origin requests and applies safe headers before verification.
      *
+     * @param environment bootstrap-owned service host configuration
      * @return the local API guard
      */
     @Bean
-    public LocalApiGuard guard() {
-        return new LocalApiGuard();
+    public LocalApiGuard guard(org.springframework.core.env.Environment environment) {
+        return new LocalApiGuard(java.util.Set.of(environment.getProperty("lab.service-host", "localhost")));
     }
 
     /**

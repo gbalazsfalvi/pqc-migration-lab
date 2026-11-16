@@ -9,18 +9,16 @@ import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Clock;
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 
 /** Starts two isolated Spring Boot contexts and real loopback HTTP listeners in one local JVM. */
-public final class LocalRuntime implements AutoCloseable {
+public final class LocalRuntime implements MigrationRuntime {
     /** Names the synthetic publisher; it never represents a real employer or partner. */
-    public static final String ISSUER = "release-publisher";
+    public static final String ISSUER = RuntimeBootstrap.ISSUER;
     /** Identifies this integration as the signed event audience. */
-    public static final String AUDIENCE = "urn:pqclab:release-receiver";
+    public static final String AUDIENCE = RuntimeBootstrap.AUDIENCE;
 
     private final ConfigurableApplicationContext publisher;
     private final ConfigurableApplicationContext receiver;
@@ -104,13 +102,7 @@ public final class LocalRuntime implements AutoCloseable {
             context.getBeanFactory().registerSingleton("clock", clock);
         });
         List<String> receiverArguments = arguments(options, options.receiverPort(), identity.issuer());
-        String databasePath =
-                options.dataDirectory().resolve("release-ledger").toString().replace('\\', '/');
-        receiverArguments.add("--spring.datasource.url=jdbc:h2:file:" + databasePath + ";DB_CLOSE_ON_EXIT=FALSE");
-        receiverArguments.add("--spring.datasource.username=sa");
-        receiverArguments.add("--spring.datasource.password=");
-        receiverArguments.add("--spring.datasource.hikari.maximum-pool-size=4");
-        receiverArguments.add("--spring.flyway.clean-disabled=true");
+        RuntimeBootstrap.ledger(receiverArguments, options.dataDirectory());
         ConfigurableApplicationContext receiver = receiverApplication.run(receiverArguments.toArray(String[]::new));
         try {
             URI endpoint = address(receiver).resolve("/api/receiver/releases");
@@ -172,36 +164,16 @@ public final class LocalRuntime implements AutoCloseable {
 
     /** Creates a Boot context whose lifetime belongs to this launcher rather than independent hooks. */
     private static SpringApplication application(Class<?> source) {
-        SpringApplication application = new SpringApplication(source);
-        application.setRegisterShutdownHook(false);
-        return application;
+        return RuntimeBootstrap.application(source);
     }
 
     /** Forces loopback binding and supplies receiver-owned settings with command-line precedence. */
     private static List<String> arguments(LocalOptions options, int port, String issuer) {
-        return new ArrayList<>(List.of(
-                "--server.address=127.0.0.1",
-                "--server.port=" + port,
-                "--lab.policy=" + options.policy(),
-                "--lab.issuer=" + issuer,
-                "--lab.audience=" + AUDIENCE,
-                "--lab.maximum-age=PT5M",
-                "--lab.future-tolerance=PT30S",
-                "--spring.main.banner-mode=off",
-                "--logging.level.root=WARN",
-                "--server.shutdown=graceful",
-                "--spring.lifecycle.timeout-per-shutdown-phase=5s",
-                "--server.error.include-message=never",
-                "--server.error.include-stacktrace=never",
-                "--server.tomcat.threads.max=16",
-                "--server.tomcat.accept-count=16",
-                "--server.tomcat.connection-timeout=5s",
-                "--spring.jmx.enabled=false"));
+        return RuntimeBootstrap.arguments(options.policy(), port, false, issuer, "localhost");
     }
 
     /** Obtains the bound HTTP port only after the embedded server has started successfully. */
     private static URI address(ConfigurableApplicationContext context) {
-        int port = ((ServletWebServerApplicationContext) context).getWebServer().getPort();
-        return URI.create("http://127.0.0.1:" + port);
+        return RuntimeBootstrap.address(context);
     }
 }
